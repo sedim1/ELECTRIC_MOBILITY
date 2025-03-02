@@ -59,8 +59,9 @@ func updateYAngle() -> void:
 func processMovement(delta : float) -> void:
 	#Bounc on wall to keep the velocity and not stop
 	if is_on_wall():
-		var objectCollided : Object = get_last_slide_collision().get_collider()
-		if objectCollided.is_in_group("Destroyable") and speed >= objectCollided.minSpeed:
+		var objectCollided : Object = get_last_slide_collision().get_collider(2)
+		print("Object name: "+objectCollided.name)
+		if objectCollided.is_in_group("Destroyable") :
 			print("Destroy object")
 			objectCollided.startDestroying()
 		else:
