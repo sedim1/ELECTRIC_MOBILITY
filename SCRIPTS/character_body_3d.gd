@@ -14,7 +14,7 @@ func _ready() -> void:
 #Player Movement
 func setInitialVelocity() -> void:
 	updateDirection()
-	speed = 150.0
+	speed = 50.0
 	velocity = direction * speed
 	pass
 
@@ -59,8 +59,13 @@ func updateYAngle() -> void:
 func processMovement(delta : float) -> void:
 	#Bounc on wall to keep the velocity and not stop
 	if is_on_wall():
-		print("Bounce!!")
-		bounceOnWall()
+		var objectCollided : Object = get_last_slide_collision().get_collider()
+		if objectCollided.is_in_group("Destroyable") and speed >= objectCollided.minSpeed:
+			print("Destroy object")
+			objectCollided.startDestroying()
+		else:
+			print("Wall bounce");
+			bounceOnWall()
 	else:
 		deaccelerate(delta)
 	updateDirection()
