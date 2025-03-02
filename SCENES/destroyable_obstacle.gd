@@ -1,5 +1,5 @@
 class_name AutoDestroy
-extends RigidBody3D
+extends StaticBody3D
 
 @export var minSpeed : float = 0.0 #Minimu speed that this object needs to be destroyed
 @onready var collisionShape : CollisionShape3D = $Collider
