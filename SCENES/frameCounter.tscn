@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SCRIPTS/frame_counter.gd" id="1_em0y3"]
 
-[node name="FPS" type="Control" node_paths=PackedStringArray("textCounter")]
+[node name="FPS" type="Control" node_paths=PackedStringArray("counter")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_em0y3")
-textCounter = NodePath("text")
+counter = NodePath("text")
 
 [node name="text" type="Label" parent="."]
 layout_mode = 0
