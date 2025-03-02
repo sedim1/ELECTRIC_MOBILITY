@@ -15,13 +15,14 @@ func followPlayerPosition(delta:float) -> Vector3:
 	var dest : Vector3
 	#Calculate destination
 	dest.y = height
-	dest.x = move_toward(global_position.x,player.global_position.x,FOLLOWSPEED * delta);
-	dest.z = move_toward(global_position.z,player.global_position.z + distance,FOLLOWSPEED * delta);
+	dest.x = player.global_position.x
+	dest.z = player.global_position.z + distance
 
 	return dest
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position = followPlayerPosition(delta)
+	if player != null:
+		global_position = followPlayerPosition(delta)
 	pass

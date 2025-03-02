@@ -1,22 +1,38 @@
 class_name  Player
 extends CharacterBody3D
 
+
 @export var acceleration : float = 10.5
-const rotSpeed = 10
+const rotSpeed = 2
 var speed : float
 var direction : Vector3
 var hasBounce : bool = true
+var isBoosting : bool = false
 
 func _ready() -> void:
 	direction = Vector3(1.0,0.0,0.0)
 	setInitialVelocity()
 
+#For boosters
+func increaseSpeed(x : float) -> void:
+	print("Old speed: " + str(speed))
+	speed += x
+	print("New speed: " + str(speed))
+	isBoosting = true
+
 #Player Movement
 func setInitialVelocity() -> void:
 	updateDirection()
-	speed = 80.0
+	speed = 180.0
 	velocity = direction * speed
 	pass
+
+func accelerate(delta : float) -> void:
+	#var horizontalVelocity : Vector3 = Vector3(velocity.x,0.0,velocity.z)
+	isBoosting = false
+	speed = velocity.length()
+	var at = acceleration * delta
+	speed = speed+at
 
 func deaccelerate(delta : float) -> void:
 	#var horizontalVelocity : Vector3 = Vector3(velocity.x,0.0,velocity.z)
@@ -61,13 +77,18 @@ func processMovement(delta : float) -> void:
 		velocity += get_gravity() * delta
 	elif is_on_wall():
 		var objectCollided  = get_slide_collision(0).get_collider()
-		print("Object name: " + objectCollided.name)
+		#print("Object name: " + objectCollided.name)
 		if objectCollided.is_in_group("Destroyable"):
-			print("Destroy object")
-			objectCollided.startDestroying()
+			#print("Destroy object")
+			if  speed >= objectCollided.minSpeed:
+				objectCollided.startDestroying()
+			else:
+				bounceOnWall()
 		else:
-			print("Wall bounce");
+			#print("Wall bounce");
 			bounceOnWall()
+	elif isBoosting:
+		accelerate(delta)
 	else:
 		deaccelerate(delta)
 	updateDirection()
