@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 
 func increaseVelocityPlayer(body:Node3D) -> void:
 	if body is Player:
-		print("Increase speed!!!")
+		#print("Increase speed!!!")
 		body.increaseSpeed(boost)
+		body.isBoosting = true
 		queue_free()

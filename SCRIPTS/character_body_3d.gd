@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 
 @export var acceleration : float = 10.5
-const rotSpeed = 2
+const rotSpeed = 2.5
 var speed : float
 var direction : Vector3
 var hasBounce : bool = true
@@ -15,22 +15,21 @@ func _ready() -> void:
 
 #For boosters
 func increaseSpeed(x : float) -> void:
-	print("Old speed: " + str(speed))
+	#print("Old speed: " + str(speed))
 	speed += x
-	print("New speed: " + str(speed))
+	#print("New speed: " + str(speed))
 	isBoosting = true
 
 #Player Movement
 func setInitialVelocity() -> void:
 	updateDirection()
-	speed = 180.0
+	speed = 80.0
 	velocity = direction * speed
 	pass
 
 func accelerate(delta : float) -> void:
 	#var horizontalVelocity : Vector3 = Vector3(velocity.x,0.0,velocity.z)
 	isBoosting = false
-	speed = velocity.length()
 	var at = acceleration * delta
 	speed = speed+at
 
@@ -94,7 +93,7 @@ func processMovement(delta : float) -> void:
 	updateDirection()
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
-	print("Speed: " + str(speed) + " m/s")
+	#print("Speed: " + str(speed) + " m/s")
 	move_and_slide()
 	pass
 
