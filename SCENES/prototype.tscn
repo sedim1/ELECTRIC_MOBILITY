@@ -48,7 +48,8 @@ current = true
 near = 0.01
 far = 1000.0
 player = NodePath("../Player")
-distance = 15.3
+height = 5.0
+distance = 10.0
 
 [node name="Player UI" parent="." node_paths=PackedStringArray("p") instance=ExtResource("4_m6ahy")]
 p = NodePath("../Player")
@@ -120,6 +121,10 @@ size = Vector3(31.6, 2.5, 0.354)
 
 [node name="wal32" type="CSGBox3D" parent="Walls"]
 transform = Transform3D(0.34202, -6.06055e-07, -0.939693, -1.32566e-08, 1, -6.49776e-07, 0.939693, 2.34693e-07, 0.34202, -299.382, 1.78926, 164.499)
+size = Vector3(20.3, 2.5, 0.354)
+
+[node name="wal36" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-0.5, -6.02835e-07, -0.866026, -1.64767e-08, 1, -6.86582e-07, 0.866026, -3.29021e-07, -0.5, -193.582, 1.78926, 165.899)
 size = Vector3(20.3, 2.5, 0.354)
 
 [node name="wal33" type="CSGBox3D" parent="Walls"]
@@ -256,5 +261,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -334.9, 1, 36.7)
 speedBoost = 30.0
 
 [node name="VelocityBoost5" parent="Boosters" instance=ExtResource("6_otyq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -312.7, 1, 97)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -308.2, 1, 96.2)
 speedBoost = 50.0

@@ -1,7 +1,8 @@
 class_name  Player
 extends CharacterBody3D
 
-
+enum playerStates {IDLE,MOVING,STOPPING}
+var currentState : playerStates
 @export var acceleration : float = 10.5
 const rotSpeed = 2.5
 var speed : float
@@ -11,6 +12,7 @@ var isBoosting : bool = false
 
 func _ready() -> void:
 	direction = Vector3(1.0,0.0,0.0)
+	currentState = playerStates.MOVING
 	setInitialVelocity()
 
 #For boosters
@@ -72,6 +74,7 @@ func updateYAngle() -> void:
 
 #Final functions
 func processMovement(delta : float) -> void:
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	elif is_on_wall():
@@ -93,11 +96,30 @@ func processMovement(delta : float) -> void:
 	updateDirection()
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
-	#print("Speed: " + str(speed) + " m/s")
-	move_and_slide()
+	$CHARACTER/AnimationPlayer.play("Accelerating")
+	if speed <= 0:
+		currentState = playerStates.STOPPING
+		$CHARACTER/AnimationPlayer.play("Stopping")
+	pass
+
+#Animation Handling
+func stopAnimation()-> void:
+	if not $CHARACTER/AnimationPlayer.is_playing():
+		currentState = playerStates.IDLE
+	pass
+
+func idleAnimation() -> void:
+	$CHARACTER/AnimationPlayer.play("Idle")
 	pass
 
 #Update every frame
 func _physics_process(delta: float) -> void:
 	updateYAngle()
-	processMovement(delta)
+	if currentState == playerStates.IDLE:
+		idleAnimation()
+	elif currentState == playerStates.MOVING:
+		processMovement(delta)
+	elif currentState == playerStates.STOPPING:
+		stopAnimation()
+	move_and_slide()
+		

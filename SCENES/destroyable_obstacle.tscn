@@ -5,10 +5,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dydq"]
 albedo_color = Color(1, 0.05, 0.05, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_gryf7"]
-lightmap_size_hint = Vector2i(14, 21)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ql8nc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0yqsr"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e3ndm"]
 
 [node name="DestroyableObstacle" type="StaticBody3D" groups=["Destroyable"]]
 collision_layer = 2
@@ -18,8 +17,8 @@ script = ExtResource("1_4gduf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.8465, 0, 0, 0, 4.8465, 0, 0, 0, 4.8465, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_6dydq")
-mesh = SubResource("BoxMesh_gryf7")
+mesh = SubResource("CapsuleMesh_ql8nc")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(4.8465, 0, 0, 0, 4.8465, 0, 0, 0, 4.8465, 0, 0, 0)
-shape = SubResource("BoxShape3D_0yqsr")
+shape = SubResource("CapsuleShape3D_e3ndm")
