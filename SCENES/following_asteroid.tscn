@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://4u8d5rel6tp"]
+
+[ext_resource type="Script" path="res://SCRIPTS/following_asteroid.gd" id="1_y0yt4"]
+[ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="2_p15tx"]
+
+[node name="FollowingAsteroid" type="PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.48395, 0, 0)
+rotation_mode = 0
+loop = false
+script = ExtResource("1_y0yt4")
+
+[node name="Asteroid" parent="." instance=ExtResource("2_p15tx")]

@@ -1,22 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjrd44tnxisju"]
+[gd_scene load_steps=13 format=3 uid="uid://cjrd44tnxisju"]
 
+[ext_resource type="Shader" path="res://SHADERS/space.gdshader" id="1_8mqu3"]
 [ext_resource type="Texture2D" uid="uid://b31wftds4qwps" path="res://ADDONS/sampler2D.png" id="1_oid2y"]
 [ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="1_wu7ps"]
+[ext_resource type="Texture2D" uid="uid://dk8qmvl6pce5g" path="res://spaceTex.png" id="2_tsv0t"]
 [ext_resource type="PackedScene" uid="uid://bctbdlvmmgvne" path="res://SCENES/player_ui.tscn" id="4_m6ahy"]
 [ext_resource type="PackedScene" uid="uid://bei1ulmtpdmc6" path="res://SCENES/camera_3d.tscn" id="4_q87u8"]
 [ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="5_c3ln6"]
 [ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="6_otyq1"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kllcp"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dytoj"]
+shader = ExtResource("1_8mqu3")
+shader_parameter/skyColor = Color(0.0113001, 0.0488001, 0.105081, 1)
+shader_parameter/spaceTex = ExtResource("2_tsv0t")
 
 [sub_resource type="Sky" id="Sky_otpck"]
-sky_material = SubResource("ProceduralSkyMaterial_kllcp")
+sky_material = SubResource("ShaderMaterial_dytoj")
+radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_dtqbn"]
 background_mode = 2
 sky = SubResource("Sky_otpck")
+reflected_light_source = 2
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlpr4"]
@@ -33,6 +38,7 @@ shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.85, 0, 2.89999)
+visible = false
 material_override = SubResource("StandardMaterial3D_jlpr4")
 use_collision = true
 collision_mask = 0
@@ -48,7 +54,7 @@ current = true
 near = 0.01
 far = 1000.0
 player = NodePath("../Player")
-height = 5.0
+height = 8.0
 distance = 10.0
 
 [node name="Player UI" parent="." node_paths=PackedStringArray("p") instance=ExtResource("4_m6ahy")]
@@ -240,6 +246,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10001, 0, 2.5)
 minSpeed = 60.0
 
 [node name="Boosters" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.359, 0)
 
 [node name="VelocityBoost" parent="Boosters" instance=ExtResource("6_otyq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -464.3, 1, 110.4)

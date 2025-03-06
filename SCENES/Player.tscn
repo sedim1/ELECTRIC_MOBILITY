@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr0hyqivuk371"]
+[gd_scene load_steps=4 format=3 uid="uid://cr0hyqivuk371"]
 
-[ext_resource type="PackedScene" uid="uid://cnw2lxvywqlaj" path="res://ADDONS/PLAYER/playerPrototype.gltf" id="1_iu5vs"]
 [ext_resource type="Script" path="res://SCRIPTS/character_body_3d.gd" id="1_x7emw"]
 [ext_resource type="PackedScene" uid="uid://s3aar6mrexjn" path="res://SCENES/Model.tscn" id="3_5e2m7"]
 
@@ -12,13 +11,33 @@ collision_mask = 11
 script = ExtResource("1_x7emw")
 acceleration = 20.5
 
-[node name="playerPrototype" parent="." instance=ExtResource("1_iu5vs")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-visible = false
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0.8, 0)
+transform = Transform3D(2.72, 0, 0, 0, 2.72, 0, 0, 0, 2.72, 0, 1.04, 0)
 shape = SubResource("SphereShape3D_uo58y")
 
-[node name="CHARACTER" parent="." instance=ExtResource("3_5e2m7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="Robot" parent="." instance=ExtResource("3_5e2m7")]
+transform = Transform3D(-6.99382e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.99382e-08, 0, -0.24, 0)
+
+[node name="Rays" type="Node3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Rays"]
+target_position = Vector3(2.29, 0, 0)
+collision_mask = 2
+
+[node name="RayCast3D7" type="RayCast3D" parent="Rays"]
+target_position = Vector3(2.29, 0, 0)
+collision_mask = 2
+
+[node name="RayCast3D6" type="RayCast3D" parent="Rays"]
+target_position = Vector3(2.29, 0, 0)
+collision_mask = 2
+
+[node name="RayCast3D3" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.939693, -1.49502e-08, -0.34202, 1.49502e-08, 1, -2.63612e-09, 0.34202, -2.63612e-09, 0.939693, 0, 0, 0)
+target_position = Vector3(2.29, 0, 0)
+collision_mask = 2
+
+[node name="RayCast3D2" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.939693, 1.49502e-08, 0.34202, -1.49502e-08, 1, -2.63612e-09, -0.34202, -2.63612e-09, 0.939693, 0, 0, 0)
+target_position = Vector3(2.29, 0, 0)
+collision_mask = 2

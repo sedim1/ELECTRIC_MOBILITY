@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbndwh2vqd3f6"]
+
+[ext_resource type="Shader" path="res://SHADERS/space.gdshader" id="1_cb5qs"]
+[ext_resource type="Texture2D" uid="uid://dk8qmvl6pce5g" path="res://spaceTex.png" id="2_0q6ll"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sacj3"]
+shader = ExtResource("1_cb5qs")
+shader_parameter/skyColor = null
+shader_parameter/spaceTex = ExtResource("2_0q6ll")
+
+[sub_resource type="Sky" id="Sky_viail"]
+sky_material = SubResource("ShaderMaterial_sacj3")
+
+[sub_resource type="Environment" id="Environment_ciubb"]
+background_mode = 2
+sky = SubResource("Sky_viail")
+tonemap_mode = 2
+
+[node name="SpaceStars" type="WorldEnvironment"]
+environment = SubResource("Environment_ciubb")

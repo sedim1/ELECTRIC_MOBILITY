@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bctbdlvmmgvne"]
+[gd_scene load_steps=3 format=3 uid="uid://bctbdlvmmgvne"]
 
 [ext_resource type="Script" path="res://SCRIPTS/player_ui.gd" id="1_1a3k8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3moud"]
+line_spacing = 0.0
+font_size = 15
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Player UI" type="Control"]
 layout_mode = 3
@@ -13,9 +19,11 @@ script = ExtResource("1_1a3k8")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 384.0
+offset_left = 128.0
 offset_top = 8.0
-offset_right = 436.0
-offset_bottom = 31.0
+offset_right = 180.0
+offset_bottom = 52.0
 text = "Speed:
-"
+0"
+label_settings = SubResource("LabelSettings_3moud")
+horizontal_alignment = 1

@@ -1,10 +1,12 @@
-class_name  Player
+class_name Player
 extends CharacterBody3D
 
 enum playerStates {IDLE,MOVING,STOPPING}
 var currentState : playerStates
 @export var acceleration : float = 10.5
-const rotSpeed = 2.5
+@onready var collider : CollisionShape3D = $CollisionShape3D
+@onready var rays : Node3D = $Rays
+const rotSpeed = 5
 var speed : float
 var direction : Vector3
 var hasBounce : bool = true
@@ -12,8 +14,11 @@ var isBoosting : bool = false
 
 func _ready() -> void:
 	direction = Vector3(1.0,0.0,0.0)
+	currentState = playerStates.IDLE
+	#setInitialVelocity()
+
+func setMovingState() -> void: 
 	currentState = playerStates.MOVING
-	setInitialVelocity()
 
 #For boosters
 func increaseSpeed(x : float) -> void:
@@ -24,9 +29,11 @@ func increaseSpeed(x : float) -> void:
 
 #Player Movement
 func setInitialVelocity() -> void:
+	collider.disabled = false
 	updateDirection()
 	speed = 80.0
 	velocity = direction * speed
+	currentState = playerStates.MOVING
 	pass
 
 func accelerate(delta : float) -> void:
@@ -60,6 +67,7 @@ func bounceOnWall() -> void: #Will update the angle based on te reflection
 	var newDir : Vector3 = direction.bounce(wallNormal).normalized()
 	var aux : Vector3 = Vector3(1.0,0.0,0.0)
 	var newAngle : float = acos((aux.dot(newDir))/(aux.length()*newDir.length()))
+	collider.disabled = true
 	if newDir.z > 0.0:
 		newAngle *= -1
 	rotation.y = newAngle 
@@ -75,9 +83,10 @@ func updateYAngle() -> void:
 #Final functions
 func processMovement(delta : float) -> void:
 
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	elif is_on_wall():
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
+	collider.disabled = false
+	if is_on_wall():
 		var objectCollided  = get_slide_collision(0).get_collider()
 		#print("Object name: " + objectCollided.name)
 		if objectCollided.is_in_group("Destroyable"):
@@ -85,9 +94,9 @@ func processMovement(delta : float) -> void:
 			if  speed >= objectCollided.minSpeed:
 				objectCollided.startDestroying()
 			else:
-				bounceOnWall()
+				if canBounce():
+					bounceOnWall()
 		else:
-			#print("Wall bounce");
 			bounceOnWall()
 	elif isBoosting:
 		accelerate(delta)
@@ -96,20 +105,20 @@ func processMovement(delta : float) -> void:
 	updateDirection()
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
-	$CHARACTER/AnimationPlayer.play("Accelerating")
+	$Robot/CHARACTER/AnimationPlayer.play("Accelerating")
 	if speed <= 0:
+		$Robot/CHARACTER/AnimationPlayer.play("Stopping")
 		currentState = playerStates.STOPPING
-		$CHARACTER/AnimationPlayer.play("Stopping")
 	pass
 
 #Animation Handling
 func stopAnimation()-> void:
-	if not $CHARACTER/AnimationPlayer.is_playing():
+	if not $Robot/CHARACTER/AnimationPlayer.is_playing():
 		currentState = playerStates.IDLE
 	pass
 
 func idleAnimation() -> void:
-	$CHARACTER/AnimationPlayer.play("Idle")
+	$Robot/CHARACTER/AnimationPlayer.play("Idle")
 	pass
 
 #Update every frame
@@ -123,3 +132,8 @@ func _physics_process(delta: float) -> void:
 		stopAnimation()
 	move_and_slide()
 		
+func canBounce() -> bool:
+	for ray : RayCast3D in rays.get_children():
+		if ray.is_colliding():
+			return true
+	return false

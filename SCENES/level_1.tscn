@@ -1,0 +1,1992 @@
+[gd_scene load_steps=9 format=3 uid="uid://ds1wkxys3vj0f"]
+
+[ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="1_k2own"]
+[ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="3_4x0q3"]
+[ext_resource type="PackedScene" uid="uid://bei1ulmtpdmc6" path="res://SCENES/camera_3d.tscn" id="4_yrkj8"]
+[ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="5_w2u73"]
+[ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="6_ixfd0"]
+[ext_resource type="PackedScene" uid="uid://bctbdlvmmgvne" path="res://SCENES/player_ui.tscn" id="6_qrieq"]
+[ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="8_rbino"]
+[ext_resource type="PackedScene" uid="uid://cp8mu7hdbwatj" path="res://SCENES/asteroid_ring.tscn" id="9_nr37i"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="SpaceStars" parent="." instance=ExtResource("1_k2own")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("3_4x0q3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69702, 0, 0.164872)
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_yrkj8")]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, -0.108108, 0, 3.1586)
+far = 200.0
+player = NodePath("../Player")
+height = 13.0
+
+[node name="InvisibleWalls" type="CSGCombiner3D" parent="."]
+visible = false
+use_collision = true
+collision_layer = 2
+collision_mask = 4
+
+[node name="wall" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -10.1, 0.3, 1.1)
+size = Vector3(10.8, 4.6, 1)
+
+[node name="wall12" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 24.6382, 0.299996, -142.761)
+size = Vector3(193.455, 4.6, 1)
+
+[node name="wall13" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 88.0215, 0.299997, -135.086)
+size = Vector3(179.203, 4.6, 1)
+
+[node name="wall8" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 72.332, 0.3, -19.2407)
+size = Vector3(25.2854, 4.6, 1)
+
+[node name="wall9" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 38.0209, 0.3, -22.7413)
+size = Vector3(18.5923, 4.6, 1)
+
+[node name="wall14" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-0.349063, -4.09619e-08, -0.937099, 4.09619e-08, 1, -5.89694e-08, 0.937099, -5.89694e-08, -0.349063, 89.6031, 0.3, -229.088)
+size = Vector3(10.1813, 4.6, 1)
+
+[node name="wall16" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-0.679339, -1.54462e-08, -0.733824, 4.09619e-08, 1, -5.89694e-08, 0.733824, -7.01191e-08, -0.679339, 280.222, 0.3, -240.439)
+size = Vector3(18.0297, 4.6, 1)
+
+[node name="wall19" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 286.033, 0.3, -252.387)
+size = Vector3(11.7659, 4.6, 1)
+
+[node name="wall18" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-0.679441, 0, 0.73373, 0, 1, 0, -0.73373, 0, -0.679441, 280.222, 0.3, -264.635)
+size = Vector3(18.0297, 4.6, 1)
+
+[node name="wall15" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-0.349063, -4.09619e-08, -0.937099, 4.09619e-08, 1, -5.89694e-08, 0.937099, -5.89694e-08, -0.349063, 30.6635, 0.3, -255.036)
+size = Vector3(34.6591, 4.6, 1)
+
+[node name="wall17" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.628, 0.3, -233.867)
+size = Vector3(183.34, 4.6, 1)
+
+[node name="wall21" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.394, 0.3, -271.232)
+size = Vector3(238.539, 4.6, 1)
+
+[node name="wall10" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(0.648186, -3.32854e-08, -0.761482, 3.32854e-08, 1, -1.53783e-08, 0.761482, -1.53783e-08, 0.648186, 31.0093, 0.3, -39.6821)
+size = Vector3(21.4193, 4.6, 1)
+
+[node name="wall11" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(-0.713666, -3.37962e-08, -0.700486, 2.82709e-08, 1, -7.70497e-08, 0.700486, -7.47911e-08, -0.713666, 80.5469, 0.3, -39.8421)
+size = Vector3(22.8504, 4.6, 1)
+
+[node name="wall4" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(1, -4.37114e-08, 3.55271e-15, 4.37114e-08, 1, -4.37114e-08, 0, 4.37114e-08, 1, 12.95, 0.300001, -8.6)
+size = Vector3(33.3, 4.6, 1)
+
+[node name="wall5" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(1, -4.37114e-08, 3.55271e-15, 4.37114e-08, 1, -4.37114e-08, 0, 4.37114e-08, 1, 17.9856, 0.300001, 11)
+size = Vector3(43.3713, 4.6, 1)
+
+[node name="wall2" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(0.866025, -2.18557e-08, -0.5, 2.18557e-08, 1, -5.85621e-09, 0.5, -5.85622e-09, 0.866025, -5.8, 0.3, 8.7)
+size = Vector3(10, 4.6, 1)
+
+[node name="wall3" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(0.866025, 2.18557e-08, 0.5, -2.18557e-08, 1, -5.85621e-09, -0.5, -5.85622e-09, 0.866025, -5.8, 0.3, -6.3)
+size = Vector3(10, 4.6, 1)
+
+[node name="wall6" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(0.866025, 2.18557e-08, 0.5, -2.18557e-08, 1, -5.85621e-09, -0.5, -5.85622e-09, 0.866025, 33.8, 0.3, -11.1424)
+size = Vector3(10, 4.6, 1)
+
+[node name="wall7" type="CSGBox3D" parent="InvisibleWalls"]
+transform = Transform3D(0.866025, 2.18557e-08, 0.5, -2.18557e-08, 1, -5.85621e-09, -0.5, -5.85622e-09, 0.866025, 56.1863, 0.3, 1.24143)
+size = Vector3(38.9657, 4.6, 1)
+
+[node name="Asteroid" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.4635, 0, 6.09109)
+
+[node name="Asteroid2" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1774, 0, -249.058)
+
+[node name="Asteroid3" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1299, 0, -254.427)
+
+[node name="Asteroid4" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0823, 0, -259.43)
+
+[node name="Asteroid5" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9126, 0, -264.434)
+
+[node name="Asteroid6" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.743, 0, -269.559)
+
+[node name="Asteroid7" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0554, 0, -244.299)
+
+[node name="Asteroid8" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6418, 0, -269.071)
+
+[node name="Asteroid9" parent="InvisibleWalls" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0316, 0, -264.189)
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="DestroyableObstacle" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.1442, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle9" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.806, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle10" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4678, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle11" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.1295, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle12" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.181, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle2" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.124, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle3" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.1752, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle4" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2978, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle5" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.1113, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle6" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.1323, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle7" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3605, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle8" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6027, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle18" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8751, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle19" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1033, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle20" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3455, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle21" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8457, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle22" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.7105, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle38" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.0255, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle23" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.9387, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle24" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1809, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle25" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.6811, 0, -219.494)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle13" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3306, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle14" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5468, 0, -46.8907)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle26" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.499, 0, -265.373)
+
+[node name="DestroyableObstacle27" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.499, 0, -268.452)
+
+[node name="DestroyableObstacle28" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.499, 0, -260.981)
+
+[node name="DestroyableObstacle29" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -271.354)
+
+[node name="DestroyableObstacle30" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -266.962)
+
+[node name="DestroyableObstacle31" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -263.159)
+
+[node name="DestroyableObstacle32" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -258.766)
+
+[node name="DestroyableObstacle33" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -254.077)
+
+[node name="DestroyableObstacle34" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -249.684)
+
+[node name="DestroyableObstacle35" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -246.545)
+
+[node name="DestroyableObstacle36" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -242.153)
+
+[node name="DestroyableObstacle37" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -237.464)
+
+[node name="DestroyableObstacle40" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -255.917)
+
+[node name="DestroyableObstacle41" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -252.66)
+
+[node name="DestroyableObstacle42" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -248.663)
+
+[node name="DestroyableObstacle43" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.829, 0, -265.373)
+
+[node name="DestroyableObstacle44" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.829, 0, -268.452)
+
+[node name="DestroyableObstacle45" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.829, 0, -260.981)
+
+[node name="DestroyableObstacle46" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -271.354)
+
+[node name="DestroyableObstacle47" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -266.962)
+
+[node name="DestroyableObstacle48" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -263.159)
+
+[node name="DestroyableObstacle49" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -258.766)
+
+[node name="DestroyableObstacle50" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -254.077)
+
+[node name="DestroyableObstacle51" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -249.684)
+
+[node name="DestroyableObstacle52" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -246.545)
+
+[node name="DestroyableObstacle53" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -242.153)
+
+[node name="DestroyableObstacle54" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -237.464)
+
+[node name="DestroyableObstacle57" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -255.917)
+
+[node name="DestroyableObstacle58" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -252.66)
+
+[node name="DestroyableObstacle59" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -248.663)
+
+[node name="DestroyableObstacle60" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.159, 0, -265.373)
+
+[node name="DestroyableObstacle61" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.159, 0, -268.452)
+
+[node name="DestroyableObstacle62" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.159, 0, -260.981)
+
+[node name="DestroyableObstacle63" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -271.354)
+
+[node name="DestroyableObstacle64" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -266.962)
+
+[node name="DestroyableObstacle65" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -263.159)
+
+[node name="DestroyableObstacle66" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -258.766)
+
+[node name="DestroyableObstacle67" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -254.077)
+
+[node name="DestroyableObstacle68" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -249.684)
+
+[node name="DestroyableObstacle69" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -246.545)
+
+[node name="DestroyableObstacle70" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -242.153)
+
+[node name="DestroyableObstacle71" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -237.464)
+
+[node name="DestroyableObstacle74" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -255.917)
+
+[node name="DestroyableObstacle75" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -252.66)
+
+[node name="DestroyableObstacle76" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -248.663)
+
+[node name="DestroyableObstacle77" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -243.989)
+
+[node name="DestroyableObstacle78" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -239.992)
+
+[node name="DestroyableObstacle79" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -243.989)
+
+[node name="DestroyableObstacle80" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -239.992)
+
+[node name="DestroyableObstacle81" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -243.989)
+
+[node name="DestroyableObstacle82" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -239.992)
+
+[node name="DestroyableObstacle83" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -236.855)
+
+[node name="DestroyableObstacle84" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -236.855)
+
+[node name="DestroyableObstacle85" parent="Obstacles" instance=ExtResource("6_ixfd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -236.855)
+
+[node name="Player UI" parent="." node_paths=PackedStringArray("p") instance=ExtResource("6_qrieq")]
+p = NodePath("../Player")
+
+[node name="Asteroid Ring3" parent="." instance=ExtResource("9_nr37i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.726, 0, -251.712)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.594, 0, -120.061)
+
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.1843, 0, -166.388)
+
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.4374, 0, -142.542)
+
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.8953, 0, -141.809)
+
+[node name="Asteroid7" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.9462, 0, -124.098)
+
+[node name="Asteroid8" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8214, -0.00012207, -190.254)
+
+[node name="Asteroid10" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.671, 0, -166.986)
+
+[node name="Asteroid14" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0711, 0, -182.622)
+
+[node name="Asteroid15" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9459, 0, -165.671)
+
+[node name="Asteroid19" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.1271, 0, -190.004)
+
+[node name="Asteroid22" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.4315, 0, -61.6702)
+
+[node name="Asteroid23" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2836, 0, -61.6702)
+
+[node name="Asteroid24" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7675, 0, -61.6702)
+
+[node name="Asteroid25" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4954, 0, -61.6702)
+
+[node name="Asteroid26" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4793, 0, -61.6702)
+
+[node name="Asteroid27" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.8735, 0, -61.6702)
+
+[node name="Asteroid28" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.063, 0, -61.6702)
+
+[node name="Asteroid29" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9151, 0, -61.6702)
+
+[node name="Asteroid30" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3624, 0, -61.6702)
+
+[node name="Asteroid31" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.2145, 0, -61.6702)
+
+[node name="Asteroid32" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.4315, 0, -219.604)
+
+[node name="Asteroid33" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2836, 0, -219.604)
+
+[node name="Asteroid34" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.063, 0, -219.604)
+
+[node name="Asteroid35" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9151, 0, -219.604)
+
+[node name="Asteroid36" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3624, 0, -219.604)
+
+[node name="Asteroid37" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.2145, 0, -219.604)
+
+[node name="Asteroid39" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1467, 0, -99.9885)
+
+[node name="Asteroid40" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4644, 0, -100.155)
+
+[node name="Asteroid41" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1924, 0, -100.155)
+
+[node name="Asteroid49" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5631, 0, -100.155)
+
+[node name="Asteroid42" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.786, 0, -99.9885)
+
+[node name="Asteroid43" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.0141, 0, -100.155)
+
+[node name="Asteroid48" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.5038, 0, -100.155)
+
+[node name="Asteroid46" parent="Asteroids" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.669, 0, -99.9885)
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Asteroid" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6962, 0, -15.9441)
+
+[node name="Asteroid2" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6962, 0, -20.6518)
+
+[node name="Asteroid3" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6962, 0, -25.2549)
+
+[node name="Asteroid4" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6962, 0, -29.9627)
+
+[node name="Asteroid33" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0517, 0, -11.6278)
+
+[node name="Asteroid34" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0302, 0, -11.6278)
+
+[node name="Asteroid35" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5317, 0, -11.6278)
+
+[node name="Asteroid36" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5101, 0, -11.6278)
+
+[node name="Asteroid37" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48852, 0, -11.6278)
+
+[node name="Asteroid38" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46695, 0, -11.6278)
+
+[node name="Asteroid39" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0315475, 0, -11.6278)
+
+[node name="Asteroid40" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05312, 0, -11.6278)
+
+[node name="Asteroid2661" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.66209, 0, -11.6278)
+
+[node name="Asteroid2662" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6837, 0, -11.6278)
+
+[node name="Asteroid41" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3352, 0, -49.637)
+
+[node name="Asteroid42" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3352, 0, -54.3447)
+
+[node name="Asteroid43" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3352, 0, -58.9478)
+
+[node name="Asteroid44" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3352, 0, -63.6556)
+
+[node name="Asteroid101" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -48.4752)
+
+[node name="Asteroid102" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -53.1829)
+
+[node name="Asteroid103" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -57.786)
+
+[node name="Asteroid352" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.7188, 0, -45.1746)
+
+[node name="Asteroid355" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.916, 0, -44.6187)
+
+[node name="Asteroid104" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -62.4937)
+
+[node name="Asteroid293" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -68.2333)
+
+[node name="Asteroid294" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -72.941)
+
+[node name="Asteroid295" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -77.5441)
+
+[node name="Asteroid296" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -82.2519)
+
+[node name="Asteroid405" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -87.8069)
+
+[node name="Asteroid406" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -92.5146)
+
+[node name="Asteroid407" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -97.1177)
+
+[node name="Asteroid408" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -101.825)
+
+[node name="Asteroid437" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -107.565)
+
+[node name="Asteroid438" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -112.273)
+
+[node name="Asteroid439" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -116.876)
+
+[node name="Asteroid440" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -121.584)
+
+[node name="Asteroid533" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -142.013)
+
+[node name="Asteroid534" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -146.721)
+
+[node name="Asteroid535" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -151.324)
+
+[node name="Asteroid557" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.8263, 0, -126.522)
+
+[node name="Asteroid558" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.8263, 0, -131.23)
+
+[node name="Asteroid559" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.8263, 0, -135.833)
+
+[node name="Asteroid560" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -156.032)
+
+[node name="Asteroid589" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -161.772)
+
+[node name="Asteroid590" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -166.479)
+
+[node name="Asteroid591" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -171.082)
+
+[node name="Asteroid592" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -175.79)
+
+[node name="Asteroid621" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -181.345)
+
+[node name="Asteroid622" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -186.053)
+
+[node name="Asteroid623" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -190.656)
+
+[node name="Asteroid624" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -195.364)
+
+[node name="Asteroid653" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -201.103)
+
+[node name="Asteroid654" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -205.811)
+
+[node name="Asteroid655" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -210.414)
+
+[node name="Asteroid656" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -215.122)
+
+[node name="Asteroid812" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -231.918)
+
+[node name="Asteroid816" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -231.918)
+
+[node name="Asteroid820" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -231.918)
+
+[node name="Asteroid824" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -231.918)
+
+[node name="Asteroid828" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -231.918)
+
+[node name="Asteroid832" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -231.918)
+
+[node name="Asteroid836" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -231.918)
+
+[node name="Asteroid840" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -231.918)
+
+[node name="Asteroid868" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -231.918)
+
+[node name="Asteroid872" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -231.918)
+
+[node name="Asteroid876" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -231.918)
+
+[node name="Asteroid880" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -231.918)
+
+[node name="Asteroid884" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -231.918)
+
+[node name="Asteroid888" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -231.918)
+
+[node name="Asteroid892" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -231.918)
+
+[node name="Asteroid896" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -231.918)
+
+[node name="Asteroid900" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -231.918)
+
+[node name="Asteroid904" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -231.918)
+
+[node name="Asteroid908" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -231.918)
+
+[node name="Asteroid912" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -231.918)
+
+[node name="Asteroid916" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -231.918)
+
+[node name="Asteroid920" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -231.918)
+
+[node name="Asteroid924" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -231.918)
+
+[node name="Asteroid928" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -231.918)
+
+[node name="Asteroid932" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -231.918)
+
+[node name="Asteroid936" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -231.918)
+
+[node name="Asteroid940" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -231.918)
+
+[node name="Asteroid944" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -231.918)
+
+[node name="Asteroid948" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -231.918)
+
+[node name="Asteroid952" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -231.918)
+
+[node name="Asteroid956" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -231.918)
+
+[node name="Asteroid960" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -231.918)
+
+[node name="Asteroid964" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -231.918)
+
+[node name="Asteroid968" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -231.918)
+
+[node name="Asteroid972" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -231.918)
+
+[node name="Asteroid976" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -231.918)
+
+[node name="Asteroid980" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -231.918)
+
+[node name="Asteroid984" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -231.918)
+
+[node name="Asteroid988" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -231.918)
+
+[node name="Asteroid992" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -231.918)
+
+[node name="Asteroid996" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -231.918)
+
+[node name="Asteroid1000" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -231.918)
+
+[node name="Asteroid1004" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -231.918)
+
+[node name="Asteroid1008" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -231.918)
+
+[node name="Asteroid1012" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -231.918)
+
+[node name="Asteroid1016" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -231.918)
+
+[node name="Asteroid1020" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -231.918)
+
+[node name="Asteroid1024" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -231.918)
+
+[node name="Asteroid1036" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -231.918)
+
+[node name="Asteroid1040" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -231.918)
+
+[node name="Asteroid1044" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -231.918)
+
+[node name="Asteroid1048" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -231.918)
+
+[node name="Asteroid1052" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -231.918)
+
+[node name="Asteroid1056" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -231.918)
+
+[node name="Asteroid1068" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -231.918)
+
+[node name="Asteroid1072" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -231.918)
+
+[node name="Asteroid1076" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -231.918)
+
+[node name="Asteroid1080" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -231.918)
+
+[node name="Asteroid1084" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -231.918)
+
+[node name="Asteroid1088" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -231.918)
+
+[node name="Asteroid843" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.172, 0, -231.918)
+
+[node name="Asteroid846" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.15, 0, -231.918)
+
+[node name="Asteroid849" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.652, 0, -231.918)
+
+[node name="Asteroid852" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.63, 0, -231.918)
+
+[node name="Asteroid855" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.608, 0, -231.918)
+
+[node name="Asteroid858" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.587, 0, -231.918)
+
+[node name="Asteroid861" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.0884, 0, -231.918)
+
+[node name="Asteroid862" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0668, 0, -220.147)
+
+[node name="Asteroid863" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0668, 0, -224.751)
+
+[node name="Asteroid864" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0668, 0, -229.458)
+
+[node name="Asteroid1096" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -215.122)
+
+[node name="Asteroid1100" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -231.918)
+
+[node name="Asteroid1104" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -231.918)
+
+[node name="Asteroid1108" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -231.918)
+
+[node name="Asteroid1112" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -231.918)
+
+[node name="Asteroid1116" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -231.918)
+
+[node name="Asteroid1120" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -231.918)
+
+[node name="Asteroid1124" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -231.918)
+
+[node name="Asteroid1128" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -231.918)
+
+[node name="Asteroid1132" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -231.918)
+
+[node name="Asteroid1136" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -231.918)
+
+[node name="Asteroid1140" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -231.918)
+
+[node name="Asteroid1144" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -231.918)
+
+[node name="Asteroid1148" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -231.918)
+
+[node name="Asteroid1152" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -231.918)
+
+[node name="Asteroid1156" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -231.918)
+
+[node name="Asteroid1160" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -231.918)
+
+[node name="Asteroid1164" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -231.918)
+
+[node name="Asteroid1168" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -231.918)
+
+[node name="Asteroid1172" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -231.918)
+
+[node name="Asteroid1176" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -231.918)
+
+[node name="Asteroid1180" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -231.918)
+
+[node name="Asteroid1184" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -231.918)
+
+[node name="Asteroid1188" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -231.918)
+
+[node name="Asteroid1192" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -231.918)
+
+[node name="Asteroid1196" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -231.918)
+
+[node name="Asteroid1200" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -231.918)
+
+[node name="Asteroid1204" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -231.918)
+
+[node name="Asteroid1208" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -231.918)
+
+[node name="Asteroid1212" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -231.918)
+
+[node name="Asteroid1216" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -231.918)
+
+[node name="Asteroid1220" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -231.918)
+
+[node name="Asteroid1224" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -231.918)
+
+[node name="Asteroid1228" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -231.918)
+
+[node name="Asteroid1232" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -231.918)
+
+[node name="Asteroid1236" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -231.918)
+
+[node name="Asteroid1240" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -231.918)
+
+[node name="Asteroid1244" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -231.918)
+
+[node name="Asteroid1248" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -231.918)
+
+[node name="Asteroid1252" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -231.918)
+
+[node name="Asteroid1256" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -231.918)
+
+[node name="Asteroid1260" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -231.918)
+
+[node name="Asteroid1264" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -231.918)
+
+[node name="Asteroid1268" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -231.918)
+
+[node name="Asteroid1272" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -231.918)
+
+[node name="Asteroid1276" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -231.918)
+
+[node name="Asteroid1280" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -231.918)
+
+[node name="Asteroid1284" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -231.918)
+
+[node name="Asteroid1288" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -231.918)
+
+[node name="Asteroid1300" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -231.918)
+
+[node name="Asteroid1304" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -231.918)
+
+[node name="Asteroid1308" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -231.918)
+
+[node name="Asteroid1312" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -231.918)
+
+[node name="Asteroid1316" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -231.918)
+
+[node name="Asteroid1320" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -231.918)
+
+[node name="Asteroid1332" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -231.918)
+
+[node name="Asteroid1336" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -231.918)
+
+[node name="Asteroid1340" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -231.918)
+
+[node name="Asteroid1344" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -231.918)
+
+[node name="Asteroid1348" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -231.918)
+
+[node name="Asteroid1352" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -231.918)
+
+[node name="Asteroid1355" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.172, 0, -231.918)
+
+[node name="Asteroid1358" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.15, 0, -231.918)
+
+[node name="Asteroid1361" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.652, 0, -231.918)
+
+[node name="Asteroid1364" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.63, 0, -231.918)
+
+[node name="Asteroid1367" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.608, 0, -231.918)
+
+[node name="Asteroid1370" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.587, 0, -231.918)
+
+[node name="Asteroid1373" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.0884, 0, -231.918)
+
+[node name="Asteroid1377" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.899, 0, -274.427)
+
+[node name="Asteroid1378" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.878, 0, -274.427)
+
+[node name="Asteroid1379" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.379, 0, -274.427)
+
+[node name="Asteroid1380" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.358, 0, -274.427)
+
+[node name="Asteroid1381" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.336, 0, -274.427)
+
+[node name="Asteroid1382" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.315, 0, -274.427)
+
+[node name="Asteroid1383" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.8161, 0, -274.427)
+
+[node name="Asteroid1384" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.7945, 0, -274.427)
+
+[node name="Asteroid1385" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -274.745)
+
+[node name="Asteroid1389" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -274.745)
+
+[node name="Asteroid1393" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -274.745)
+
+[node name="Asteroid1397" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -274.745)
+
+[node name="Asteroid1401" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -274.745)
+
+[node name="Asteroid1405" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -274.745)
+
+[node name="Asteroid1409" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -274.745)
+
+[node name="Asteroid1413" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -274.745)
+
+[node name="Asteroid1417" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -274.745)
+
+[node name="Asteroid1421" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -274.745)
+
+[node name="Asteroid1425" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -274.745)
+
+[node name="Asteroid1429" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -274.745)
+
+[node name="Asteroid1433" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -274.745)
+
+[node name="Asteroid1437" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -274.745)
+
+[node name="Asteroid1441" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -274.745)
+
+[node name="Asteroid1445" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -274.745)
+
+[node name="Asteroid1449" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -274.745)
+
+[node name="Asteroid1453" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -274.745)
+
+[node name="Asteroid1457" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -274.745)
+
+[node name="Asteroid1461" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -274.745)
+
+[node name="Asteroid1465" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -274.745)
+
+[node name="Asteroid1469" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -274.745)
+
+[node name="Asteroid1473" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -274.745)
+
+[node name="Asteroid1477" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -274.745)
+
+[node name="Asteroid1481" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -274.745)
+
+[node name="Asteroid1485" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -274.745)
+
+[node name="Asteroid1489" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -274.745)
+
+[node name="Asteroid1493" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -274.745)
+
+[node name="Asteroid1497" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -274.745)
+
+[node name="Asteroid1501" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -274.745)
+
+[node name="Asteroid1505" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -274.745)
+
+[node name="Asteroid1509" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -274.745)
+
+[node name="Asteroid1513" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -274.745)
+
+[node name="Asteroid1517" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -274.745)
+
+[node name="Asteroid1521" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -274.745)
+
+[node name="Asteroid1525" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -274.745)
+
+[node name="Asteroid1529" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -274.745)
+
+[node name="Asteroid1533" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -274.745)
+
+[node name="Asteroid1537" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -274.745)
+
+[node name="Asteroid1541" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -274.745)
+
+[node name="Asteroid1545" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -274.745)
+
+[node name="Asteroid1549" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -274.745)
+
+[node name="Asteroid1553" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -274.745)
+
+[node name="Asteroid1557" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -274.745)
+
+[node name="Asteroid1561" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -274.745)
+
+[node name="Asteroid1565" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -274.745)
+
+[node name="Asteroid1569" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -274.745)
+
+[node name="Asteroid1573" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -274.745)
+
+[node name="Asteroid1581" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.579, 0, -274.745)
+
+[node name="Asteroid1585" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -274.745)
+
+[node name="Asteroid1589" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -274.745)
+
+[node name="Asteroid1593" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -274.745)
+
+[node name="Asteroid1597" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -274.745)
+
+[node name="Asteroid1601" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -274.745)
+
+[node name="Asteroid1605" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -274.745)
+
+[node name="Asteroid1617" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -274.745)
+
+[node name="Asteroid1621" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -274.745)
+
+[node name="Asteroid1625" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -274.745)
+
+[node name="Asteroid1629" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -274.745)
+
+[node name="Asteroid1633" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -274.745)
+
+[node name="Asteroid1637" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -274.745)
+
+[node name="Asteroid1665" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.899, 0, -274.427)
+
+[node name="Asteroid1666" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.878, 0, -274.427)
+
+[node name="Asteroid1667" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.379, 0, -274.427)
+
+[node name="Asteroid1668" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.358, 0, -274.427)
+
+[node name="Asteroid1669" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.336, 0, -274.427)
+
+[node name="Asteroid1670" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.315, 0, -274.427)
+
+[node name="Asteroid1671" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.8161, 0, -274.427)
+
+[node name="Asteroid1672" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -274.745)
+
+[node name="Asteroid1676" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -274.745)
+
+[node name="Asteroid1680" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -274.745)
+
+[node name="Asteroid1684" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -274.745)
+
+[node name="Asteroid1688" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -274.745)
+
+[node name="Asteroid1692" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -274.745)
+
+[node name="Asteroid1696" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -274.745)
+
+[node name="Asteroid1700" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -274.745)
+
+[node name="Asteroid1704" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.683, 0, -274.745)
+
+[node name="Asteroid1708" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.661, 0, -274.745)
+
+[node name="Asteroid1712" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.163, 0, -274.745)
+
+[node name="Asteroid1716" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.141, 0, -274.745)
+
+[node name="Asteroid1720" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.12, 0, -274.745)
+
+[node name="Asteroid1724" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.098, 0, -274.745)
+
+[node name="Asteroid1728" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.6, 0, -274.745)
+
+[node name="Asteroid1732" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.578, 0, -274.745)
+
+[node name="Asteroid1736" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -274.745)
+
+[node name="Asteroid1740" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -274.745)
+
+[node name="Asteroid1744" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -274.745)
+
+[node name="Asteroid1748" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -274.745)
+
+[node name="Asteroid1752" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -274.745)
+
+[node name="Asteroid1756" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -274.745)
+
+[node name="Asteroid1760" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -274.745)
+
+[node name="Asteroid1764" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -274.745)
+
+[node name="Asteroid1768" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.108, 0, -274.745)
+
+[node name="Asteroid1772" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.087, 0, -274.745)
+
+[node name="Asteroid1776" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.588, 0, -274.745)
+
+[node name="Asteroid1780" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.566, 0, -274.745)
+
+[node name="Asteroid1784" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.545, 0, -274.745)
+
+[node name="Asteroid1788" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.523, 0, -274.745)
+
+[node name="Asteroid1792" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.025, 0, -274.745)
+
+[node name="Asteroid1796" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.003, 0, -274.745)
+
+[node name="Asteroid1800" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -274.745)
+
+[node name="Asteroid1804" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -274.745)
+
+[node name="Asteroid1808" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -274.745)
+
+[node name="Asteroid1812" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -274.745)
+
+[node name="Asteroid1816" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -274.745)
+
+[node name="Asteroid1820" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -274.745)
+
+[node name="Asteroid1824" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -274.745)
+
+[node name="Asteroid1828" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -274.745)
+
+[node name="Asteroid1832" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 244.175, 0, -274.745)
+
+[node name="Asteroid1836" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.153, 0, -274.745)
+
+[node name="Asteroid1840" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.655, 0, -274.745)
+
+[node name="Asteroid1844" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 229.633, 0, -274.745)
+
+[node name="Asteroid1848" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.612, 0, -274.745)
+
+[node name="Asteroid1852" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.59, 0, -274.745)
+
+[node name="Asteroid1856" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.092, 0, -274.745)
+
+[node name="Asteroid1860" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210.07, 0, -274.745)
+
+[node name="Asteroid1868" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.579, 0, -274.745)
+
+[node name="Asteroid1872" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -274.745)
+
+[node name="Asteroid1876" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -274.745)
+
+[node name="Asteroid1880" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -274.745)
+
+[node name="Asteroid1884" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -274.745)
+
+[node name="Asteroid1888" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -274.745)
+
+[node name="Asteroid1892" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -274.745)
+
+[node name="Asteroid1904" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.08, 0, -274.745)
+
+[node name="Asteroid1908" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 269.058, 0, -274.745)
+
+[node name="Asteroid2217" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -245.766)
+
+[node name="Asteroid2218" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -250.474)
+
+[node name="Asteroid2219" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -255.077)
+
+[node name="Asteroid2220" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -259.784)
+
+[node name="Asteroid2233" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -245.766)
+
+[node name="Asteroid2234" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -250.474)
+
+[node name="Asteroid2235" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -255.077)
+
+[node name="Asteroid2236" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -259.784)
+
+[node name="Asteroid2249" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -245.766)
+
+[node name="Asteroid2250" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -250.474)
+
+[node name="Asteroid2251" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -255.077)
+
+[node name="Asteroid2252" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -259.784)
+
+[node name="Asteroid2265" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -245.766)
+
+[node name="Asteroid2266" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -250.474)
+
+[node name="Asteroid2267" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -255.077)
+
+[node name="Asteroid2268" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -259.784)
+
+[node name="Asteroid2369" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.607, 0, -264.47)
+
+[node name="Asteroid1912" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.037, 0, -274.745)
+
+[node name="Asteroid1916" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 259.015, 0, -274.745)
+
+[node name="Asteroid1920" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.517, 0, -274.745)
+
+[node name="Asteroid1924" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.495, 0, -274.745)
+
+[node name="Asteroid2085" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.537, 0, -273.909)
+
+[node name="Asteroid2089" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5154, 0, -273.909)
+
+[node name="Asteroid2093" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.017, 0, -273.909)
+
+[node name="Asteroid2097" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9954, 0, -273.909)
+
+[node name="Asteroid2117" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.537, 0, -273.909)
+
+[node name="Asteroid2121" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5154, 0, -273.909)
+
+[node name="Asteroid2125" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.017, 0, -273.909)
+
+[node name="Asteroid2129" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9954, 0, -273.909)
+
+[node name="Asteroid2149" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9622, 0, -273.909)
+
+[node name="Asteroid2153" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.9406, 0, -273.909)
+
+[node name="Asteroid2157" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4422, 0, -273.909)
+
+[node name="Asteroid2161" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4206, 0, -273.909)
+
+[node name="Asteroid2165" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.399, 0, -273.909)
+
+[node name="Asteroid2169" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3775, 0, -273.909)
+
+[node name="Asteroid2173" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.879, 0, -273.909)
+
+[node name="Asteroid2177" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.8574, 0, -273.909)
+
+[node name="Asteroid2181" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9622, 0, -273.909)
+
+[node name="Asteroid2185" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.9406, 0, -273.909)
+
+[node name="Asteroid2189" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4422, 0, -273.909)
+
+[node name="Asteroid2193" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4206, 0, -273.909)
+
+[node name="Asteroid2197" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.399, 0, -273.909)
+
+[node name="Asteroid2201" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3775, 0, -273.909)
+
+[node name="Asteroid2205" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.879, 0, -273.909)
+
+[node name="Asteroid2209" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.8574, 0, -273.909)
+
+[node name="Asteroid2372" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.537, 0, -273.909)
+
+[node name="Asteroid2376" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5154, 0, -273.909)
+
+[node name="Asteroid2380" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.017, 0, -273.909)
+
+[node name="Asteroid2384" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9954, 0, -273.909)
+
+[node name="Asteroid2404" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.537, 0, -273.909)
+
+[node name="Asteroid2408" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.5154, 0, -273.909)
+
+[node name="Asteroid2412" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.017, 0, -273.909)
+
+[node name="Asteroid2416" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9954, 0, -273.909)
+
+[node name="Asteroid2436" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9622, 0, -273.909)
+
+[node name="Asteroid2440" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.9406, 0, -273.909)
+
+[node name="Asteroid2444" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4422, 0, -273.909)
+
+[node name="Asteroid2448" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4206, 0, -273.909)
+
+[node name="Asteroid2452" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.399, 0, -273.909)
+
+[node name="Asteroid2456" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3775, 0, -273.909)
+
+[node name="Asteroid2460" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.879, 0, -273.909)
+
+[node name="Asteroid2464" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.8574, 0, -273.909)
+
+[node name="Asteroid2468" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9622, 0, -273.909)
+
+[node name="Asteroid2472" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.9406, 0, -273.909)
+
+[node name="Asteroid2476" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4422, 0, -273.909)
+
+[node name="Asteroid2480" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4206, 0, -273.909)
+
+[node name="Asteroid2484" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.399, 0, -273.909)
+
+[node name="Asteroid2488" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3775, 0, -273.909)
+
+[node name="Asteroid2492" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.879, 0, -273.909)
+
+[node name="Asteroid2496" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.8574, 0, -273.909)
+
+[node name="Asteroid1374" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0668, 0, -220.147)
+
+[node name="Asteroid1375" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0668, 0, -224.751)
+
+[node name="Asteroid1376" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0668, 0, -229.458)
+
+[node name="Asteroid657" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -142.013)
+
+[node name="Asteroid658" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -146.721)
+
+[node name="Asteroid659" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -151.324)
+
+[node name="Asteroid660" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -156.032)
+
+[node name="Asteroid688" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7118, 0, -126.522)
+
+[node name="Asteroid689" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7118, 0, -131.23)
+
+[node name="Asteroid690" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7118, 0, -135.833)
+
+[node name="Asteroid713" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -161.772)
+
+[node name="Asteroid714" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -166.479)
+
+[node name="Asteroid715" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -171.082)
+
+[node name="Asteroid716" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -175.79)
+
+[node name="Asteroid745" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -181.345)
+
+[node name="Asteroid746" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -186.053)
+
+[node name="Asteroid747" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -190.656)
+
+[node name="Asteroid748" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -195.364)
+
+[node name="Asteroid777" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -201.103)
+
+[node name="Asteroid778" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -205.811)
+
+[node name="Asteroid779" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -210.414)
+
+[node name="Asteroid780" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -215.122)
+
+[node name="Asteroid1949" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -219.915)
+
+[node name="Asteroid1950" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -224.518)
+
+[node name="Asteroid1951" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -229.226)
+
+[node name="Asteroid1973" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -234.965)
+
+[node name="Asteroid1974" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.68, 0, -239.673)
+
+[node name="Asteroid1975" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0991, 0, -244.276)
+
+[node name="Asteroid1976" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0529, 0, -248.984)
+
+[node name="Asteroid2049" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8439, 0, -254.406)
+
+[node name="Asteroid2005" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6348, 0, -259.618)
+
+[node name="Asteroid2006" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9374, 0, -264.221)
+
+[node name="Asteroid2007" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8912, 0, -268.929)
+
+[node name="Asteroid441" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -87.8069)
+
+[node name="Asteroid442" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -92.5146)
+
+[node name="Asteroid443" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -97.1177)
+
+[node name="Asteroid444" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -101.825)
+
+[node name="Asteroid473" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -107.565)
+
+[node name="Asteroid474" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -112.273)
+
+[node name="Asteroid475" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -116.876)
+
+[node name="Asteroid476" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0625, 0, -121.584)
+
+[node name="Asteroid297" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8854, 0, -68.2333)
+
+[node name="Asteroid298" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8854, 0, -72.941)
+
+[node name="Asteroid299" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8854, 0, -77.5441)
+
+[node name="Asteroid300" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8854, 0, -82.2519)
+
+[node name="Asteroid108" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5595, 0, 14.3258)
+
+[node name="Asteroid112" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.538, 0, 14.3258)
+
+[node name="Asteroid116" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0395, 0, 14.3258)
+
+[node name="Asteroid120" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0179, 0, 14.3258)
+
+[node name="Asteroid124" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9963, 0, 14.3258)
+
+[node name="Asteroid128" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9748, 0, 14.3258)
+
+[node name="Asteroid132" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.47626, 0, 14.3258)
+
+[node name="Asteroid136" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45469, 0, 14.3258)
+
+[node name="Asteroid169" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9123, 0, 8.064)
+
+[node name="Asteroid170" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9123, 0, 3.35628)
+
+[node name="Asteroid171" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9123, 0, -1.24683)
+
+[node name="Asteroid172" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9123, 0, -5.95456)
+
+[node name="Asteroid232" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.0306, 0, 13.9555)
+
+[node name="Asteroid2704" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67557, 0, 13.9555)
+
+[node name="Asteroid2708" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.69714, 0, 13.9555)
+
+[node name="Asteroid2712" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1956, 0, 13.9555)
+
+[node name="Asteroid264" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.0387, 0, -6.59764)
+
+[node name="Asteroid161" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.2717, 0, -9.9513)
+
+[node name="Asteroid163" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.5815, 0, -39.6409)
+
+[node name="Asteroid164" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1513, 0, -34.6023)
+
+[node name="Asteroid165" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1233, 0, -12.8309)
+
+[node name="Asteroid166" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1233, 0, -17.5386)
+
+[node name="Asteroid167" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1233, 0, -22.1418)
+
+[node name="Asteroid168" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1233, 0, -26.8495)
+
+[node name="Asteroid2733" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.4481, 0, 9.01407)
+
+[node name="Asteroid2735" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0433, 0, -40.3855)
+
+[node name="Asteroid2736" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9764, 0, -34.6452)
+
+[node name="Asteroid2739" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.4762, 0, -32.077)
+
+[node name="Asteroid2741" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.1669, 0, -37.3829)
+
+[node name="Asteroid2742" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.9345, 0, -42.3043)
+
+[node name="Asteroid5" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.5897, 0, 2.95258)
+
+[node name="Asteroid6" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.1929, 0, 0.127917)
+
+[node name="Asteroid7" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.6914, 0, -2.48751)
+
+[node name="Asteroid8" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.7715, 0, -4.68447)
+
+[node name="Asteroid9" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6295, 0, 10.6942)
+
+[node name="Asteroid10" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.6485, 0, 5.74051)
+
+[node name="Asteroid12" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67157, 0, -7.56579)
+
+[node name="Asteroid13" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2531, 0, 9.69604)
+
+[node name="Asteroid14" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.455, 0, -233.793)
+
+[node name="Asteroid15" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.488, 0, -238.182)
+
+[node name="Asteroid16" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 286.046, 0, -242.452)
+
+[node name="Asteroid17" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 284.03, 0, -263.683)
+
+[node name="Asteroid18" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280.353, 0, -267.834)
+
+[node name="Asteroid19" parent="Background" instance=ExtResource("5_w2u73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 276.913, 0, -271.274)
+
+[node name="VelocityBoost" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2829, 0, -178.64)
+speedBoost = 20.0
+
+[node name="VelocityBoost2" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.6109, 0, -177.889)
+speedBoost = 20.0
+
+[node name="VelocityBoost3" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.3807, 0, -141.16)
+speedBoost = 30.0
+
+[node name="VelocityBoost4" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3524, 0, -142.193)
+speedBoost = 30.0
+
+[node name="VelocityBoost5" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.1507, 0, -141.418)
+speedBoost = 30.0
+
+[node name="VelocityBoost6" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6445, 0, -79.4023)
+speedBoost = 50.0
+
+[node name="VelocityBoost7" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1415, 0, -79.1439)
+speedBoost = 50.0
+
+[node name="VelocityBoost8" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.247, 0, -251.37)
+speedBoost = 80.0
