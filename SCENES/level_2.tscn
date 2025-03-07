@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="1_qgmd1"]
 [ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="2_j5smx"]
 [ext_resource type="PackedScene" uid="uid://bei1ulmtpdmc6" path="res://SCENES/camera_3d.tscn" id="3_x0b5d"]
-[ext_resource type="Script" path="res://SCRIPTS/asteroid_spawner.gd" id="4_618h0"]
+[ext_resource type="Script" uid="uid://dvgmlk8788ysn" path="res://SCRIPTS/asteroid_spawner.gd" id="4_618h0"]
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="5_scg72"]
 
 [sub_resource type="Curve3D" id="Curve3D_exiro"]

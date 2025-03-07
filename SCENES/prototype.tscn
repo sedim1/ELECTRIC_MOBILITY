@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cjrd44tnxisju"]
 
-[ext_resource type="Shader" path="res://SHADERS/space.gdshader" id="1_8mqu3"]
+[ext_resource type="Shader" uid="uid://ckri2gn0tfnhl" path="res://SHADERS/space.gdshader" id="1_8mqu3"]
 [ext_resource type="Texture2D" uid="uid://b31wftds4qwps" path="res://ADDONS/sampler2D.png" id="1_oid2y"]
 [ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="1_wu7ps"]
 [ext_resource type="Texture2D" uid="uid://dk8qmvl6pce5g" path="res://spaceTex.png" id="2_tsv0t"]

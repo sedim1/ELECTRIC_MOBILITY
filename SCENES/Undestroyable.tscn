@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=4 uid="uid://c4ymo0gy0ve2"]
 
-[ext_resource type="Shader" path="res://SHADERS/PS1.gdshader" id="1_02v6i"]
-[ext_resource type="Script" path="res://SCRIPTS/undestroyable.gd" id="1_8n7wp"]
+[ext_resource type="Shader" uid="uid://cr5q7px0rnj1d" path="res://SHADERS/PS1.gdshader" id="1_02v6i"]
+[ext_resource type="Script" uid="uid://bq7wy853k0lli" path="res://SCRIPTS/undestroyable.gd" id="1_8n7wp"]
 [ext_resource type="Texture2D" uid="uid://drvesoopafrct" path="res://ADDONS/Asteroid/Asteroid2.png" id="2_wuwj5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_73222"]
 render_priority = 0
 shader = ExtResource("1_02v6i")
 shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_wuwj5")
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("2_wuwj5")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5s3gt"]
 _surfaces = [{

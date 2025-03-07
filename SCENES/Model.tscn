@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c71big4k48b04" path="res://ADDONS/PLAYER/CHARACTER_256X256_ARMS.png" id="1_p7rs8"]
 [ext_resource type="Texture2D" uid="uid://d2tcyetjektuk" path="res://ADDONS/PLAYER/CHARACTER_BODY_256_256.png" id="2_1htqq"]
-[ext_resource type="Shader" path="res://SHADERS/PS1.gdshader" id="2_07lcr"]
+[ext_resource type="Shader" uid="uid://cr5q7px0rnj1d" path="res://SHADERS/PS1.gdshader" id="2_07lcr"]
 [ext_resource type="Texture2D" uid="uid://chbp0qopk7rpf" path="res://ADDONS/PLAYER/CHARACTER_HEAD_256X256.png" id="3_ny2lf"]
 [ext_resource type="Texture2D" uid="uid://kp7qoq626kdu" path="res://ADDONS/PLAYER/CHARACTER_256X256_HANDS.png" id="4_yumc5"]
 
@@ -10,10 +10,10 @@
 render_priority = 0
 shader = ExtResource("2_07lcr")
 shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("1_p7rs8")
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("1_p7rs8")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8u87v"]
 resource_name = "CHARACTER_Cylinder_003"
@@ -67,10 +67,10 @@ bind/7/pose = Transform3D(-1.57532e-06, 1, 0.000129852, -0.999902, 7.53773e-08, 
 render_priority = 0
 shader = ExtResource("2_07lcr")
 shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_1htqq")
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("2_1htqq")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rngja"]
 resource_name = "CHARACTER_Cylinder_001"
@@ -96,10 +96,10 @@ blend_shape_mode = 0
 render_priority = 0
 shader = ExtResource("2_07lcr")
 shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("3_ny2lf")
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("3_ny2lf")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8m5fo"]
 resource_name = "CHARACTER_Cube"
@@ -125,10 +125,10 @@ blend_shape_mode = 0
 render_priority = 0
 shader = ExtResource("2_07lcr")
 shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("4_yumc5")
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("4_yumc5")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7njio"]
 resource_name = "CHARACTER_Icosphere"
@@ -396,9 +396,9 @@ tracks/10/keys = PackedFloat32Array(0, 1, 0.193218, 0.617506, -0.185923, 0.73945
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_adt0g"]
 _data = {
-"Accelerating": SubResource("Animation_voigx"),
-"Idle": SubResource("Animation_x1ydf"),
-"Stopping": SubResource("Animation_0ntu8")
+&"Accelerating": SubResource("Animation_voigx"),
+&"Idle": SubResource("Animation_x1ydf"),
+&"Stopping": SubResource("Animation_0ntu8")
 }
 
 [node name="Robot" type="Node3D"]

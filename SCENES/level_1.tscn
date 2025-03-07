@@ -1,15 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds1wkxys3vj0f"]
+[gd_scene load_steps=11 format=3 uid="uid://ds1wkxys3vj0f"]
 
 [ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="1_k2own"]
+[ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_xlwda"]
 [ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="3_4x0q3"]
 [ext_resource type="PackedScene" uid="uid://bei1ulmtpdmc6" path="res://SCENES/camera_3d.tscn" id="4_yrkj8"]
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="5_w2u73"]
 [ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="6_ixfd0"]
 [ext_resource type="PackedScene" uid="uid://bctbdlvmmgvne" path="res://SCENES/player_ui.tscn" id="6_qrieq"]
 [ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="8_rbino"]
-[ext_resource type="PackedScene" uid="uid://cp8mu7hdbwatj" path="res://SCENES/asteroid_ring.tscn" id="9_nr37i"]
+[ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="10_yhr03"]
+[ext_resource type="PackedScene" uid="uid://2qept01rea13" path="res://SCENES/win_area.tscn" id="11_h21sa"]
 
-[node name="Level1" type="Node3D"]
+[node name="Level1" type="Node3D" node_paths=PackedStringArray("character")]
+script = ExtResource("1_xlwda")
+nextLevel = "res://SCENES/midlevel2.tscn"
+character = NodePath("Player")
 
 [node name="SpaceStars" parent="." instance=ExtResource("1_k2own")]
 
@@ -21,10 +26,10 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69702, 0, 0.164872)
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_yrkj8")]
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, -0.108108, 0, 3.1586)
+transform = Transform3D(1, 0, 0, 0, 0.414693, 0.909961, 0, -0.909961, 0.414693, -0.108108, 0, 3.1586)
 far = 200.0
 player = NodePath("../Player")
-height = 13.0
+height = 20.0
 
 [node name="InvisibleWalls" type="CSGCombiner3D" parent="."]
 visible = false
@@ -394,12 +399,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -236.855)
 
 [node name="DestroyableObstacle85" parent="Obstacles" instance=ExtResource("6_ixfd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -236.855)
-
-[node name="Player UI" parent="." node_paths=PackedStringArray("p") instance=ExtResource("6_qrieq")]
-p = NodePath("../Player")
-
-[node name="Asteroid Ring3" parent="." instance=ExtResource("9_nr37i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.726, 0, -251.712)
 
 [node name="Asteroids" type="Node3D" parent="."]
 
@@ -1961,11 +1960,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 276.913, 0, -271.274)
 
 [node name="VelocityBoost" parent="." instance=ExtResource("8_rbino")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2829, 0, -178.64)
-speedBoost = 20.0
+speedBoost = 38.0
 
 [node name="VelocityBoost2" parent="." instance=ExtResource("8_rbino")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.6109, 0, -177.889)
-speedBoost = 20.0
+speedBoost = 38.0
+
+[node name="VelocityBoost8" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.717, -0.000244141, -261.912)
+speedBoost = 45.0
+
+[node name="VelocityBoost9" parent="." instance=ExtResource("8_rbino")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.778, -0.00012207, -243.609)
+speedBoost = 45.0
 
 [node name="VelocityBoost3" parent="." instance=ExtResource("8_rbino")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.3807, 0, -141.16)
@@ -1987,6 +1994,10 @@ speedBoost = 50.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1415, 0, -79.1439)
 speedBoost = 50.0
 
-[node name="VelocityBoost8" parent="." instance=ExtResource("8_rbino")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.247, 0, -251.37)
-speedBoost = 80.0
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("p") instance=ExtResource("6_qrieq")]
+p = NodePath("../Player")
+
+[node name="Transition" parent="." instance=ExtResource("10_yhr03")]
+
+[node name="WinArea" parent="." instance=ExtResource("11_h21sa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.474, 0, -252.909)

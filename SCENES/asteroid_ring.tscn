@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cp8mu7hdbwatj"]
 
-[ext_resource type="Script" path="res://SCRIPTS/asteroid_ring.gd" id="1_uf6ho"]
+[ext_resource type="Script" uid="uid://cgj0i0npbus8" path="res://SCRIPTS/asteroid_ring.gd" id="1_uf6ho"]
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="1_vw26r"]
 
 [node name="Asteroid Ring" type="Node3D"]

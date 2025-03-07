@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bctbdlvmmgvne"]
 
-[ext_resource type="Script" path="res://SCRIPTS/player_ui.gd" id="1_1a3k8"]
+[ext_resource type="Script" uid="uid://by242s6mm2p83" path="res://SCRIPTS/player_ui.gd" id="1_1a3k8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3moud"]
 line_spacing = 0.0
@@ -8,7 +8,7 @@ font_size = 15
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Player UI" type="Control"]
+[node name="PlayerUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,0 +1,1001 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkspddxnw5age"]
+
+[ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_1yqq2"]
+[ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="1_yrher"]
+[ext_resource type="PackedScene" uid="uid://bei1ulmtpdmc6" path="res://SCENES/camera_3d.tscn" id="2_1hxv5"]
+[ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="3_1yqq2"]
+[ext_resource type="PackedScene" uid="uid://bctbdlvmmgvne" path="res://SCENES/player_ui.tscn" id="4_5grk7"]
+[ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="6_5grk7"]
+[ext_resource type="PackedScene" uid="uid://2qept01rea13" path="res://SCENES/win_area.tscn" id="7_5grk7"]
+[ext_resource type="Script" uid="uid://dvgmlk8788ysn" path="res://SCRIPTS/asteroid_spawner.gd" id="8_cdf6k"]
+[ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="9_4n86x"]
+[ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="10_65xl4"]
+[ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="11_i0xd8"]
+
+[sub_resource type="Curve3D" id="Curve3D_4n86x"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.67305, 0, 9.96972, 0, 0, 0, 0, 0, 0, -14.6806, 0, -68.0065),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[node name="levelEasy" type="Node3D" node_paths=PackedStringArray("character")]
+script = ExtResource("1_1yqq2")
+nextLevel = "res://SCENES/leveleasy_2.tscn"
+character = NodePath("Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="SpaceStars" parent="." instance=ExtResource("1_yrher")]
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_1hxv5")]
+transform = Transform3D(1, 0, 0, 0, 0.414693, 0.909961, 0, -0.909961, 0.414693, -0.271681, 0, 0.346092)
+player = NodePath("../Player")
+height = 20.0
+
+[node name="Player" parent="." instance=ExtResource("3_1yqq2")]
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("p") instance=ExtResource("4_5grk7")]
+p = NodePath("../Player")
+
+[node name="Transition" parent="." instance=ExtResource("6_5grk7")]
+
+[node name="WinArea" parent="." instance=ExtResource("7_5grk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 356.377, 0, 4.176)
+
+[node name="Spawner" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.3529, 0, 24.6165)
+curve = SubResource("Curve3D_4n86x")
+script = ExtResource("8_cdf6k")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+visible = false
+layers = 4
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5135, 0, 2.21029)
+size = Vector3(1, 4.25, 53.4573)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 388.592, 0, 2.21029)
+size = Vector3(1, 4.25, 53.4573)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.96, 0, 2.21029)
+size = Vector3(1, 4.25, 53.4573)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 181.875, 0, -24.4133)
+size = Vector3(1, 4.25, 411.6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 181.521, 0, 28.2218)
+size = Vector3(1, 4.25, 409.666)
+
+[node name="Asteroid" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.03, 0, 18.1155)
+
+[node name="Asteroid2" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.03, 0, 0.27487)
+
+[node name="Asteroid4" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.78, 0, 13.3048)
+
+[node name="Asteroid5" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.78, 0, -6.47186)
+
+[node name="Asteroid3" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.03, 0, -15.4668)
+
+[node name="Asteroid6" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.302, 0, 18.1155)
+
+[node name="Asteroid7" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.302, 0, 0.27487)
+
+[node name="Asteroid8" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.051, 0, 10.2446)
+
+[node name="Asteroid9" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.051, 0, -7.59598)
+
+[node name="Asteroid10" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.302, 0, -15.4668)
+
+[node name="VelocityBoost" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.0125, 0, -7.69409)
+speedBoost = 30.0
+
+[node name="VelocityBoost2" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.2749, 0, 10.4089)
+speedBoost = 30.0
+
+[node name="VelocityBoost3" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.762, 0, 1.86442)
+speedBoost = 30.0
+
+[node name="VelocityBoost5" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.762, 0, 24.8218)
+speedBoost = 30.0
+
+[node name="VelocityBoost4" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.762, 0, -14.1878)
+speedBoost = 30.0
+
+[node name="DestroyableObstacle" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, -20.3067)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle2" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, -14.6028)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle3" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle4" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle5" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle6" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle7" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle8" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, 20.3353)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle9" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, 25.5261)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle10" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, -20.3067)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle11" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, -14.6028)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle12" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle13" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle14" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle15" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle16" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle17" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, 20.3353)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle18" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, 25.5261)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle19" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, -20.3067)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle20" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, -14.6028)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle21" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle22" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle23" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle24" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle25" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle26" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, 20.3353)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle27" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, 25.5261)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle37" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, -20.3067)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle38" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, -14.6028)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle39" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle40" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle41" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle42" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle43" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle44" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, 20.3353)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle45" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, 25.5261)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle46" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, -20.3067)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle47" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, -14.6028)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle48" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle49" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle50" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle51" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle52" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle53" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, 20.3353)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle54" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, 25.5261)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle55" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, -20.3067)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle56" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, -14.6028)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle57" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle58" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle59" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle60" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle61" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle62" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, 20.3353)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle63" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, 25.5261)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle28" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, -20.3067)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle29" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, -14.6028)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle30" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle31" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle32" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle33" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle34" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle64" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.438, 0, -8.32797)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle65" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.438, 0, -2.62402)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle66" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.438, 0, 2.65262)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle67" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.438, 0, 8.35657)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle68" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.438, 0, 14.6314)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle35" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, 20.3353)
+minSpeed = 40.0
+
+[node name="DestroyableObstacle36" parent="." instance=ExtResource("11_i0xd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, 25.5261)
+minSpeed = 40.0
+
+[node name="VelocityBoost6" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.425, 0, -7.83054)
+speedBoost = 30.0
+
+[node name="VelocityBoost7" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.425, 0, 11.0318)
+speedBoost = 30.0
+
+[node name="VelocityBoost8" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.08, 0, -15.9991)
+speedBoost = 30.0
+
+[node name="VelocityBoost9" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.08, 0, 1.466)
+speedBoost = 30.0
+
+[node name="VelocityBoost10" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 211.405, 0, 21.0269)
+speedBoost = 30.0
+
+[node name="Asteroid11" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.272, 0, -21.0906)
+
+[node name="Asteroid12" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.272, 0, -14.9015)
+
+[node name="Asteroid13" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.272, 0, 20.36)
+
+[node name="Asteroid14" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.272, 0, 26.5491)
+
+[node name="VelocityBoost11" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.999, 0, -4.5741)
+speedBoost = 40.0
+
+[node name="VelocityBoost12" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.999, 0, 2.41193)
+speedBoost = 40.0
+
+[node name="VelocityBoost13" parent="." instance=ExtResource("10_65xl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.999, 0, 10.3295)
+speedBoost = 40.0
+
+[node name="Asteroid15" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, 27.9801)
+
+[node name="Asteroid16" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, 22.696)
+
+[node name="Asteroid17" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, 17.5391)
+
+[node name="Asteroid18" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, 12.255)
+
+[node name="Asteroid19" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, 6.92682)
+
+[node name="Asteroid20" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, 1.64276)
+
+[node name="Asteroid21" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, -3.68542)
+
+[node name="Asteroid22" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, -8.96948)
+
+[node name="Asteroid23" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, -13.613)
+
+[node name="Asteroid24" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4595, 0, -13.8696)
+
+[node name="Asteroid191" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, 27.9801)
+
+[node name="Asteroid192" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, 22.696)
+
+[node name="Asteroid193" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, 17.5391)
+
+[node name="Asteroid194" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, 12.255)
+
+[node name="Asteroid195" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, 6.92682)
+
+[node name="Asteroid196" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, 1.64276)
+
+[node name="Asteroid197" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, -3.68542)
+
+[node name="Asteroid198" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, -8.96948)
+
+[node name="Asteroid199" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, -13.613)
+
+[node name="Asteroid200" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 386.646, 0, -13.8696)
+
+[node name="Asteroid25" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9077, 0, -19.9677)
+
+[node name="Asteroid26" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7342, 0, -19.9677)
+
+[node name="Asteroid27" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1109, 0, -19.9677)
+
+[node name="Asteroid28" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61219, 0, -19.9677)
+
+[node name="Asteroid29" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27586, 0, -19.9677)
+
+[node name="Asteroid30" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89761, 0, -19.9677)
+
+[node name="Asteroid31" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52096, 0, -19.9677)
+
+[node name="Asteroid32" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0196, 0, -19.9677)
+
+[node name="Asteroid33" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0698, 0, -19.9677)
+
+[node name="Asteroid34" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2433, 0, -19.9677)
+
+[node name="Asteroid35" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8666, 0, -19.9677)
+
+[node name="Asteroid36" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3653, 0, -19.9677)
+
+[node name="Asteroid37" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7016, 0, -19.9677)
+
+[node name="Asteroid38" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.8751, 0, -19.9677)
+
+[node name="Asteroid39" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.4984, 0, -19.9677)
+
+[node name="Asteroid40" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9971, 0, -19.9677)
+
+[node name="Asteroid41" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.2476, 0, -19.9677)
+
+[node name="Asteroid42" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.4211, 0, -19.9677)
+
+[node name="Asteroid43" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0444, 0, -19.9677)
+
+[node name="Asteroid44" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5431, 0, -19.9677)
+
+[node name="Asteroid45" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.8794, 0, -19.9677)
+
+[node name="Asteroid46" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.0529, 0, -19.9677)
+
+[node name="Asteroid47" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.6763, 0, -19.9677)
+
+[node name="Asteroid48" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1749, 0, -19.9677)
+
+[node name="Asteroid49" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.2251, 0, -19.9677)
+
+[node name="Asteroid50" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.399, 0, -19.9677)
+
+[node name="Asteroid51" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.022, 0, -19.9677)
+
+[node name="Asteroid52" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.521, 0, -19.9677)
+
+[node name="Asteroid53" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.857, 0, -19.9677)
+
+[node name="Asteroid54" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.03, 0, -19.9677)
+
+[node name="Asteroid55" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.654, 0, -19.9677)
+
+[node name="Asteroid56" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.152, 0, -19.9677)
+
+[node name="Asteroid57" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.403, 0, -19.9677)
+
+[node name="Asteroid58" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.576, 0, -19.9677)
+
+[node name="Asteroid59" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.2, 0, -19.9677)
+
+[node name="Asteroid60" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.698, 0, -19.9677)
+
+[node name="Asteroid61" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.035, 0, -19.9677)
+
+[node name="Asteroid62" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.208, 0, -19.9677)
+
+[node name="Asteroid63" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.832, 0, -19.9677)
+
+[node name="Asteroid64" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.33, 0, -19.9677)
+
+[node name="Asteroid65" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.38, 0, -19.9677)
+
+[node name="Asteroid66" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.554, 0, -19.9677)
+
+[node name="Asteroid67" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.177, 0, -19.9677)
+
+[node name="Asteroid68" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.676, 0, -19.9677)
+
+[node name="Asteroid69" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.012, 0, -19.9677)
+
+[node name="Asteroid70" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.186, 0, -19.9677)
+
+[node name="Asteroid71" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.809, 0, -19.9677)
+
+[node name="Asteroid72" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.308, 0, -19.9677)
+
+[node name="Asteroid73" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 216.558, 0, -19.9677)
+
+[node name="Asteroid74" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.732, 0, -19.9677)
+
+[node name="Asteroid75" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 227.355, 0, -19.9677)
+
+[node name="Asteroid76" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 231.854, 0, -19.9677)
+
+[node name="Asteroid77" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.19, 0, -19.9677)
+
+[node name="Asteroid78" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241.364, 0, -19.9677)
+
+[node name="Asteroid79" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 246.987, 0, -19.9677)
+
+[node name="Asteroid80" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.486, 0, -19.9677)
+
+[node name="Asteroid81" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256.536, 0, -19.9677)
+
+[node name="Asteroid82" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 261.709, 0, -19.9677)
+
+[node name="Asteroid83" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 267.333, 0, -19.9677)
+
+[node name="Asteroid84" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 271.831, 0, -19.9677)
+
+[node name="Asteroid85" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 276.168, 0, -19.9677)
+
+[node name="Asteroid86" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 281.341, 0, -19.9677)
+
+[node name="Asteroid87" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 286.964, 0, -19.9677)
+
+[node name="Asteroid88" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.463, 0, -19.9677)
+
+[node name="Asteroid89" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 295.714, 0, -19.9677)
+
+[node name="Asteroid90" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300.887, 0, -19.9677)
+
+[node name="Asteroid91" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 306.51, 0, -19.9677)
+
+[node name="Asteroid92" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 311.009, 0, -19.9677)
+
+[node name="Asteroid93" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 315.345, 0, -19.9677)
+
+[node name="Asteroid94" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320.519, 0, -19.9677)
+
+[node name="Asteroid95" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 326.142, 0, -19.9677)
+
+[node name="Asteroid96" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330.641, 0, -19.9677)
+
+[node name="Asteroid97" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 335.691, 0, -19.9677)
+
+[node name="Asteroid98" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340.864, 0, -19.9677)
+
+[node name="Asteroid99" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 346.488, 0, -19.9677)
+
+[node name="Asteroid100" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.986, 0, -19.9677)
+
+[node name="Asteroid101" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 355.323, 0, -19.9677)
+
+[node name="Asteroid102" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 360.496, 0, -19.9677)
+
+[node name="Asteroid103" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.12, 0, -19.9677)
+
+[node name="Asteroid104" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.618, 0, -19.9677)
+
+[node name="Asteroid105" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 374.869, 0, -19.9677)
+
+[node name="Asteroid106" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380.042, 0, -19.9677)
+
+[node name="Asteroid107" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 385.666, 0, -19.9677)
+
+[node name="Asteroid108" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9077, 0, 31.8151)
+
+[node name="Asteroid109" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7342, 0, 31.8151)
+
+[node name="Asteroid110" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1109, 0, 31.8151)
+
+[node name="Asteroid111" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61219, 0, 31.8151)
+
+[node name="Asteroid112" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27586, 0, 31.8151)
+
+[node name="Asteroid113" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89761, 0, 31.8151)
+
+[node name="Asteroid114" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52096, 0, 31.8151)
+
+[node name="Asteroid115" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0196, 0, 31.8151)
+
+[node name="Asteroid116" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0698, 0, 31.8151)
+
+[node name="Asteroid117" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2433, 0, 31.8151)
+
+[node name="Asteroid118" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8666, 0, 31.8151)
+
+[node name="Asteroid119" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3653, 0, 31.8151)
+
+[node name="Asteroid120" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7016, 0, 31.8151)
+
+[node name="Asteroid121" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.8751, 0, 31.8151)
+
+[node name="Asteroid122" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.4984, 0, 31.8151)
+
+[node name="Asteroid123" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9971, 0, 31.8151)
+
+[node name="Asteroid124" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.2476, 0, 31.8151)
+
+[node name="Asteroid125" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.4211, 0, 31.8151)
+
+[node name="Asteroid126" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0444, 0, 31.8151)
+
+[node name="Asteroid127" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5431, 0, 31.8151)
+
+[node name="Asteroid128" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.8794, 0, 31.8151)
+
+[node name="Asteroid129" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.0529, 0, 31.8151)
+
+[node name="Asteroid130" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.6763, 0, 31.8151)
+
+[node name="Asteroid131" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1749, 0, 31.8151)
+
+[node name="Asteroid132" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.2251, 0, 31.8151)
+
+[node name="Asteroid133" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.399, 0, 31.8151)
+
+[node name="Asteroid134" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.022, 0, 31.8151)
+
+[node name="Asteroid135" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.521, 0, 31.8151)
+
+[node name="Asteroid136" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.857, 0, 31.8151)
+
+[node name="Asteroid137" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.03, 0, 31.8151)
+
+[node name="Asteroid138" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.654, 0, 31.8151)
+
+[node name="Asteroid139" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.152, 0, 31.8151)
+
+[node name="Asteroid140" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.403, 0, 31.8151)
+
+[node name="Asteroid141" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.576, 0, 31.8151)
+
+[node name="Asteroid142" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.2, 0, 31.8151)
+
+[node name="Asteroid143" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.698, 0, 31.8151)
+
+[node name="Asteroid144" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.035, 0, 31.8151)
+
+[node name="Asteroid145" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.208, 0, 31.8151)
+
+[node name="Asteroid146" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.832, 0, 31.8151)
+
+[node name="Asteroid147" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.33, 0, 31.8151)
+
+[node name="Asteroid148" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.38, 0, 31.8151)
+
+[node name="Asteroid149" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.554, 0, 31.8151)
+
+[node name="Asteroid150" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.177, 0, 31.8151)
+
+[node name="Asteroid151" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.676, 0, 31.8151)
+
+[node name="Asteroid152" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.012, 0, 31.8151)
+
+[node name="Asteroid153" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.186, 0, 31.8151)
+
+[node name="Asteroid154" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.809, 0, 31.8151)
+
+[node name="Asteroid155" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 212.308, 0, 31.8151)
+
+[node name="Asteroid156" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 216.558, 0, 31.8151)
+
+[node name="Asteroid157" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 221.732, 0, 31.8151)
+
+[node name="Asteroid158" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 227.355, 0, 31.8151)
+
+[node name="Asteroid159" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 231.854, 0, 31.8151)
+
+[node name="Asteroid160" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.19, 0, 31.8151)
+
+[node name="Asteroid161" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241.364, 0, 31.8151)
+
+[node name="Asteroid162" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 246.987, 0, 31.8151)
+
+[node name="Asteroid163" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.486, 0, 31.8151)
+
+[node name="Asteroid164" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256.536, 0, 31.8151)
+
+[node name="Asteroid165" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 261.709, 0, 31.8151)
+
+[node name="Asteroid166" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 267.333, 0, 31.8151)
+
+[node name="Asteroid167" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 271.831, 0, 31.8151)
+
+[node name="Asteroid168" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 276.168, 0, 31.8151)
+
+[node name="Asteroid169" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 281.341, 0, 31.8151)
+
+[node name="Asteroid170" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 286.964, 0, 31.8151)
+
+[node name="Asteroid171" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.463, 0, 31.8151)
+
+[node name="Asteroid172" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 295.714, 0, 31.8151)
+
+[node name="Asteroid173" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300.887, 0, 31.8151)
+
+[node name="Asteroid174" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 306.51, 0, 31.8151)
+
+[node name="Asteroid175" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 311.009, 0, 31.8151)
+
+[node name="Asteroid176" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 315.345, 0, 31.8151)
+
+[node name="Asteroid177" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320.519, 0, 31.8151)
+
+[node name="Asteroid178" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 326.142, 0, 31.8151)
+
+[node name="Asteroid179" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330.641, 0, 31.8151)
+
+[node name="Asteroid180" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 335.691, 0, 31.8151)
+
+[node name="Asteroid181" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340.864, 0, 31.8151)
+
+[node name="Asteroid182" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 346.488, 0, 31.8151)
+
+[node name="Asteroid183" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 350.986, 0, 31.8151)
+
+[node name="Asteroid184" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 355.323, 0, 31.8151)
+
+[node name="Asteroid185" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 360.496, 0, 31.8151)
+
+[node name="Asteroid186" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.12, 0, 31.8151)
+
+[node name="Asteroid187" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 370.618, 0, 31.8151)
+
+[node name="Asteroid188" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 374.869, 0, 31.8151)
+
+[node name="Asteroid189" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380.042, 0, 31.8151)
+
+[node name="Asteroid190" parent="." instance=ExtResource("9_4n86x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 385.666, 0, 31.8151)

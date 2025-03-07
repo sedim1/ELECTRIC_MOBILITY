@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://4lc68iyq7pyr"]
+
+[ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_3pwo2"]
+[ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="2_73ljn"]
+[ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="3_s7g8i"]
+[ext_resource type="PackedScene" uid="uid://bctbdlvmmgvne" path="res://SCENES/player_ui.tscn" id="4_1hxby"]
+[ext_resource type="PackedScene" uid="uid://bei1ulmtpdmc6" path="res://SCENES/camera_3d.tscn" id="5_2ou10"]
+[ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="6_4e177"]
+[ext_resource type="PackedScene" uid="uid://2qept01rea13" path="res://SCENES/win_area.tscn" id="7_73ljn"]
+
+[node name="Level Template" type="Node3D" node_paths=PackedStringArray("character")]
+script = ExtResource("1_3pwo2")
+character = NodePath("Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_73ljn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="Transition" parent="." instance=ExtResource("3_s7g8i")]
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("p") instance=ExtResource("4_1hxby")]
+p = NodePath("../Player")
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_2ou10")]
+transform = Transform3D(1, 0, 0, 0, 0.414693, 0.909961, 0, -0.909961, 0.414693, 0, 0, 4)
+player = NodePath("../Player")
+height = 20.0
+
+[node name="SpaceStars" parent="." instance=ExtResource("6_4e177")]
+
+[node name="WinArea" parent="." instance=ExtResource("7_73ljn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4, 0, 1.8)

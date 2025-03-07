@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://2qept01rea13"]
+
+[ext_resource type="Script" uid="uid://cbol4esp84us" path="res://SCENES/win_area.gd" id="1_fbj1h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xhqsg"]
+size = Vector3(10.785, 1, 25.295)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkn7x"]
+transparency = 1
+albedo_color = Color(0, 0.886275, 1, 0.0862745)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmpsa"]
+size = Vector3(19.927, 1, 291.862)
+
+[node name="WinArea" type="Area3D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_fbj1h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 10.2555, 0, 0, 0)
+mesh = SubResource("BoxMesh_xhqsg")
+surface_material_override/0 = SubResource("StandardMaterial3D_gkn7x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57191, 0, -0.0130005)
+shape = SubResource("BoxShape3D_qmpsa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

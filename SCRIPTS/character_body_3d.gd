@@ -15,10 +15,6 @@ var isBoosting : bool = false
 func _ready() -> void:
 	direction = Vector3(1.0,0.0,0.0)
 	currentState = playerStates.IDLE
-	#setInitialVelocity()
-
-func setMovingState() -> void: 
-	currentState = playerStates.MOVING
 
 #For boosters
 func increaseSpeed(x : float) -> void:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=4 uid="uid://b7ee8j8er8dnb"]
 
-[ext_resource type="Script" path="res://SCRIPTS/velocity_boost.gd" id="1_0jq2i"]
+[ext_resource type="Script" uid="uid://ckpm6xnsh2c4s" path="res://SCRIPTS/velocity_boost.gd" id="1_0jq2i"]
 [ext_resource type="Texture2D" uid="uid://ut3bo3sdxmup" path="res://ADDONS/velocityBooster_VelocityBooster.png" id="2_gw47m"]
-[ext_resource type="Shader" path="res://SHADERS/PS1.gdshader" id="2_uaewq"]
+[ext_resource type="Shader" uid="uid://cr5q7px0rnj1d" path="res://SHADERS/PS1.gdshader" id="2_uaewq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_il2ds"]
 radius = 0.0724293
@@ -12,10 +12,10 @@ height = 0.249712
 render_priority = 0
 shader = ExtResource("2_uaewq")
 shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_gw47m")
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("2_gw47m")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dl5ik"]
 _surfaces = [{

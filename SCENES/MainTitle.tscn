@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://hkmuddovojjj"]
+
+[ext_resource type="Script" uid="uid://nhx8a7wf5hbq" path="res://SCRIPTS/main_title.gd" id="1_l58l5"]
+[ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="2_kxaqf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hkhrj"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfn7t"]
+font_size = 14
+
+[node name="MainTitle" type="Node3D"]
+script = ExtResource("1_l58l5")
+firstLevel = "res://SCENES/level_easy.tscn"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 12.0
+offset_right = 250.0
+offset_bottom = 54.0
+text = "FORWARGY"
+label_settings = SubResource("LabelSettings_hkhrj")
+
+[node name="Indication" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 200.0
+offset_right = 244.0
+offset_bottom = 223.0
+text = "PRESS ENTER TO START"
+label_settings = SubResource("LabelSettings_kfn7t")
+
+[node name="Transition" parent="." instance=ExtResource("2_kxaqf")]
