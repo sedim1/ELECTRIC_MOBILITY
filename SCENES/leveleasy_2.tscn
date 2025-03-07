@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bufmrvykkmc8b"]
+[gd_scene load_steps=17 format=3 uid="uid://bufmrvykkmc8b"]
 
 [ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_3v676"]
 [ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="2_u7dgo"]
@@ -13,10 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="11_clrdf"]
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="12_hka2b"]
 [ext_resource type="PackedScene" uid="uid://b1vwjjkpsxbe6" path="res://SCENES/level_ost.tscn" id="13_8odo8"]
+[ext_resource type="Script" uid="uid://c6r8yp53yekxw" path="res://SCRIPTS/camera_path.gd" id="14_fl54x"]
 
 [sub_resource type="Curve3D" id="Curve3D_mvu6f"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 115.39, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_h5eku"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.028, 0, 348.2),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -41,7 +49,7 @@ p = NodePath("../Player")
 [node name="Camera3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_u7dgo")]
 transform = Transform3D(1, 0, 0, 0, 0.414693, 0.909961, 0, -0.909961, 0.414693, 0, 0, 12.5)
 player = NodePath("../Player")
-height = 20.0
+height = 30.0
 
 [node name="SpaceStars" parent="." instance=ExtResource("6_jd1f8")]
 
@@ -908,3 +916,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1, 0, -360.9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1, 0, -360.9)
 
 [node name="LevelOST" parent="." instance=ExtResource("13_8odo8")]
+
+[node name="CameraPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29999, 59.3, -335.7)
+curve = SubResource("Curve3D_h5eku")
+script = ExtResource("14_fl54x")
+speed = 0.3
+
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
+rotation_mode = 0
+loop = false
+
+[node name="Camera3D" type="Camera3D" parent="CameraPath/PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

@@ -4,7 +4,7 @@ enum STATES {LOADTITLE,LOAD_FIRST_LEVEL}
 var state : STATES
 @export var firstLevel : String
 @onready var fadeTransitions : Transition = $Transition
-@onready var modelAsteroid : Node3D = $Asteroid
+@onready var modelAsteroid : StaticBody3D = $Asteroid
 @onready var modelCharacter : PathFollow3D = $Path3D/Model
 
 
@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		get_tree().quit()
 	
 	modelCharacter.progress_ratio += 0.5 * delta
-	
+
 	modelAsteroid.rotation_degrees.y += 0.9
 	if state == STATES.LOADTITLE:
 		loadTitleState()

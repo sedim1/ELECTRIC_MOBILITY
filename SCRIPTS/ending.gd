@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 			get_tree().change_scene_to_file(mainTitlePath)
 		pass
 	else:
-		currentTime = Time.get_ticks_msec()
-		if currentTime - lastTime >= 5000:
+		#currentTime = Time.get_ticks_msec()
+		if Input.is_action_just_pressed("ui_accept"):
 			canRestart = true
 			t.transitionFadeToBlack()
 	pass

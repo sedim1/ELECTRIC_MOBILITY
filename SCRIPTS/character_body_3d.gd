@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody3D
 
-enum playerStates {IDLE,MOVING,STOPPING}
+enum playerStates {IDLE,MOVING,STOPPING,SHOWCASE}
 var currentState : playerStates
 @export var acceleration : float = 10.5
 @onready var collider : CollisionShape3D = $CollisionShape3D
@@ -73,11 +73,12 @@ func bounceOnWall() -> void: #Will update the angle based on te reflection
 
 #Input Processing
 func updateYAngle() -> void:
-	if currentState !=  playerStates.IDLE:
+	if currentState !=  playerStates.IDLE or currentState == playerStates.SHOWCASE:
 		if Input.is_action_pressed("left"):
 			rotation_degrees.y += rotSpeed
 		if Input.is_action_pressed("right"):
 			rotation_degrees.y -= rotSpeed
+		pass
 
 #Final functions
 func processMovement(delta : float) -> void:

@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dt647c424adbd"]
+
+[ext_resource type="FontFile" uid="uid://dr7jtdd3uy7rs" path="res://FONTS/iosevka-comfy-normalextraboldupright.ttf" id="1_wjlk6"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_wjlk6")
+font_size = 13
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)

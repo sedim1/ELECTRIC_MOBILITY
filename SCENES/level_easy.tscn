@@ -7,19 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://bctbdlvmmgvne" path="res://SCENES/player_ui.tscn" id="4_5grk7"]
 [ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="6_5grk7"]
 [ext_resource type="PackedScene" uid="uid://2qept01rea13" path="res://SCENES/win_area.tscn" id="7_5grk7"]
-[ext_resource type="Script" uid="uid://dvgmlk8788ysn" path="res://SCRIPTS/asteroid_spawner.gd" id="8_cdf6k"]
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="9_4n86x"]
 [ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="10_65xl4"]
 [ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="11_i0xd8"]
 [ext_resource type="PackedScene" uid="uid://b1vwjjkpsxbe6" path="res://SCENES/level_ost.tscn" id="12_2dppt"]
+[ext_resource type="Script" uid="uid://c6r8yp53yekxw" path="res://SCRIPTS/camera_path.gd" id="12_ns6s3"]
 
-[sub_resource type="Curve3D" id="Curve3D_4n86x"]
+[sub_resource type="Curve3D" id="Curve3D_afph8"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.67305, 0, 9.96972, 0, 0, 0, 0, 0, 0, -14.6806, 0, -68.0065),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -390.105, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-up_vector_enabled = false
 
 [node name="levelEasy" type="Node3D" node_paths=PackedStringArray("character")]
 script = ExtResource("1_1yqq2")
@@ -33,9 +32,10 @@ shadow_enabled = true
 [node name="SpaceStars" parent="." instance=ExtResource("1_yrher")]
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_1hxv5")]
-transform = Transform3D(1, 0, 0, 0, 0.414693, 0.909961, 0, -0.909961, 0.414693, -0.271681, 0, 0.346092)
+transform = Transform3D(1, 0, 0, 0, 0.414693, 0.909961, 0, -0.909961, 0.414693, 289.335, 133.78, 69.657)
+far = 1000.0
 player = NodePath("../Player")
-height = 20.0
+height = 30.0
 
 [node name="Player" parent="." instance=ExtResource("3_1yqq2")]
 
@@ -47,12 +47,8 @@ p = NodePath("../Player")
 [node name="WinArea" parent="." instance=ExtResource("7_5grk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 356.377, 0, 4.176)
 
-[node name="Spawner" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.3529, 0, 24.6165)
-curve = SubResource("Curve3D_4n86x")
-script = ExtResource("8_cdf6k")
-
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.28468)
 visible = false
 layers = 4
 use_collision = true
@@ -971,3 +967,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380.042, 0, 31.8151)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 385.666, 0, 31.8151)
 
 [node name="LevelOST" parent="." instance=ExtResource("12_2dppt")]
+
+[node name="CameraPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 384.845, 66.0131, 8.88531)
+curve = SubResource("Curve3D_afph8")
+script = ExtResource("12_ns6s3")
+speed = 0.3
+
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath"]
+rotation_mode = 0
+loop = false
+
+[node name="Camera3D" type="Camera3D" parent="CameraPath/PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

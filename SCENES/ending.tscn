@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnileu1vyj6y4"]
+[gd_scene load_steps=10 format=3 uid="uid://cnileu1vyj6y4"]
 
 [ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="1_2gcyj"]
 [ext_resource type="Script" uid="uid://dlq8l7aoihk6q" path="res://SCRIPTS/ending.gd" id="1_eu5ou"]
 [ext_resource type="FontFile" uid="uid://bf1j2fcukoi8v" path="res://FONTS/SuperPixel-m2L8j.ttf" id="2_bcffj"]
+[ext_resource type="FontFile" uid="uid://dr7jtdd3uy7rs" path="res://FONTS/iosevka-comfy-normalextraboldupright.ttf" id="3_cbjik"]
 [ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="3_dvfqw"]
 [ext_resource type="PackedScene" uid="uid://s3aar6mrexjn" path="res://SCENES/Model.tscn" id="4_t3eu8"]
 
@@ -12,12 +13,23 @@ font_size = 25
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cbjik"]
+font = ExtResource("3_cbjik")
+font_size = 12
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_2gcyj"]
+font = ExtResource("3_cbjik")
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Ending" type="Node3D"]
 script = ExtResource("1_eu5ou")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.171011, 0.213329, 0.961897, -0.469849, 0.875778, -0.110698, 0, 0, 4.1)
+shadow_enabled = true
 
 [node name="Endingui" type="Control" parent="."]
 layout_mode = 3
@@ -39,11 +51,23 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Endingui"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 210.0
-offset_right = 294.0
-offset_bottom = 233.0
+offset_left = 21.0
+offset_top = 85.0
+offset_right = 307.0
+offset_bottom = 108.0
 text = "Any kind of feedback is apreciated"
+label_settings = SubResource("LabelSettings_cbjik")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Endingui"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 191.0
+offset_right = 315.0
+offset_bottom = 214.0
+text = "Press Enter To Return
+Title"
 label_settings = SubResource("LabelSettings_2gcyj")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2usbypivweam"]
+
+[ext_resource type="Texture2D" uid="uid://cyy7bld3q6dt6" path="res://UI_KEYS.png" id="1_db8rj"]
+[ext_resource type="Script" uid="uid://b332u5ya4gg8l" path="res://SCRIPTS/gamecontrols.gd" id="1_e1u36"]
+[ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="1_h52xy"]
+[ext_resource type="FontFile" uid="uid://bf1j2fcukoi8v" path="res://FONTS/SuperPixel-m2L8j.ttf" id="3_ikr0s"]
+[ext_resource type="LabelSettings" uid="uid://bnbtayfvjf73n" path="res://new_label_settings.tres" id="4_6iay0"]
+[ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="4_e1u36"]
+[ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="4_vhn6n"]
+[ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="6_y1mtv"]
+[ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="7_dq6pu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6iay0"]
+font = ExtResource("3_ikr0s")
+font_size = 10
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GAMECONTROLS" type="Node3D"]
+script = ExtResource("1_e1u36")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UiKeys" type="Sprite2D" parent="Control"]
+position = Vector2(50, 201)
+scale = Vector2(0.397059, 0.397059)
+texture = ExtResource("1_db8rj")
+
+[node name="oBJECTIVE" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 317.0
+offset_bottom = 67.0
+text = "OBJECTIVE:
+REACH TO THE GOAL BEFORE 
+YOUR ENERGY REACHES 0"
+label_settings = SubResource("LabelSettings_6iay0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Keyboard" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 161.0
+offset_right = 105.0
+offset_bottom = 184.0
+text = "Turn left/right"
+label_settings = ExtResource("4_6iay0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 178.0
+offset_right = 229.0
+offset_bottom = 217.0
+text = "increases
+energy
+more energy= more speed"
+label_settings = ExtResource("4_6iay0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 168.0
+offset_right = 313.0
+offset_bottom = 207.0
+text = "destroyable
+obstacles
+(energy above 40)"
+label_settings = ExtResource("4_6iay0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 221.0
+offset_right = 219.0
+offset_bottom = 244.0
+text = "PRESS ENTER TO CONTINUE"
+label_settings = ExtResource("4_6iay0")
+
+[node name="Transition" parent="." instance=ExtResource("1_h52xy")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.72684, -0.415247, 0.54706, 0.679939, -0.322689, 0.65845, -0.0968891, 0.850554, 0.516885, -1.9, 1.5, 13.7)
+shadow_enabled = true
+
+[node name="SpaceStars" parent="." instance=ExtResource("4_e1u36")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1)
+
+[node name="Player" parent="." instance=ExtResource("4_vhn6n")]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -3.73, 0, -5.295)
+
+[node name="VelocityBoost" parent="." instance=ExtResource("6_y1mtv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.1, 0.5, -5.2)
+
+[node name="DestroyableObstacle" parent="." instance=ExtResource("7_dq6pu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.1, 1.2, -5.9)

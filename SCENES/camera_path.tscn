@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://by6e0i1lxsqxi"]
+
+[ext_resource type="Script" uid="uid://c6r8yp53yekxw" path="res://SCRIPTS/camera_path.gd" id="1_k5jta"]
+
+[sub_resource type="Curve3D" id="Curve3D_ay1ku"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -158.628, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="CameraPath" type="Path3D"]
+curve = SubResource("Curve3D_ay1ku")
+script = ExtResource("1_k5jta")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+rotation_mode = 0
+loop = false
+
+[node name="Camera3D" type="Camera3D" parent="PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

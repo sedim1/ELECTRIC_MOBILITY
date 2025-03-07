@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bctbdlvmmgvne"]
+[gd_scene load_steps=5 format=3 uid="uid://bctbdlvmmgvne"]
 
 [ext_resource type="Script" uid="uid://by242s6mm2p83" path="res://SCRIPTS/player_ui.gd" id="1_1a3k8"]
 [ext_resource type="FontFile" uid="uid://dr7jtdd3uy7rs" path="res://FONTS/iosevka-comfy-normalextraboldupright.ttf" id="2_kpmqe"]
+[ext_resource type="LabelSettings" uid="uid://bnbtayfvjf73n" path="res://new_label_settings.tres" id="3_liuk4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3moud"]
 line_spacing = 0.0
@@ -29,3 +30,12 @@ text = "Speed:
 0"
 label_settings = SubResource("LabelSettings_3moud")
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 224.0
+offset_right = 66.0
+offset_bottom = 247.0
+text = "R - RESTART"
+label_settings = ExtResource("3_liuk4")
