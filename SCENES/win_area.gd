@@ -15,4 +15,5 @@ func _on_body_entered(body:Node3D) -> void:
 	if body is Player:
 		body.currentState = body.playerStates.STOPPING
 		playerEntered = true
+		$AudioStreamPlayer.play()
 	pass # Replace with function body.

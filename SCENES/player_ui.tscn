@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bctbdlvmmgvne"]
+[gd_scene load_steps=4 format=3 uid="uid://bctbdlvmmgvne"]
 
 [ext_resource type="Script" uid="uid://by242s6mm2p83" path="res://SCRIPTS/player_ui.gd" id="1_1a3k8"]
+[ext_resource type="FontFile" uid="uid://dr7jtdd3uy7rs" path="res://FONTS/iosevka-comfy-normalextraboldupright.ttf" id="2_kpmqe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3moud"]
 line_spacing = 0.0
+font = ExtResource("2_kpmqe")
 font_size = 15
-outline_size = 3
+outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="PlayerUI" type="Control"]

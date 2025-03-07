@@ -11,6 +11,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("close"):
 		print("Exiting Game")
 		get_tree().quit()
+	
+	$Robot/CHARACTER/AnimationPlayer.play("Idle")
+
 	if canRestart:
 		if not t.animation_player.is_playing():
 			print("Go to main title scene")

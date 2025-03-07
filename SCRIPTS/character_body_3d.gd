@@ -6,6 +6,8 @@ var currentState : playerStates
 @export var acceleration : float = 10.5
 @onready var collider : CollisionShape3D = $CollisionShape3D
 @onready var rays : Node3D = $Rays
+@onready var lostAudio : AudioStreamPlayer = $LostSound
+
 const rotSpeed = 5
 var speed : float
 var direction : Vector3
@@ -71,10 +73,11 @@ func bounceOnWall() -> void: #Will update the angle based on te reflection
 
 #Input Processing
 func updateYAngle() -> void:
-	if Input.is_action_pressed("left"):
-		rotation_degrees.y += rotSpeed
-	if Input.is_action_pressed("right"):
-		rotation_degrees.y -= rotSpeed
+	if currentState !=  playerStates.IDLE:
+		if Input.is_action_pressed("left"):
+			rotation_degrees.y += rotSpeed
+		if Input.is_action_pressed("right"):
+			rotation_degrees.y -= rotSpeed
 
 #Final functions
 func processMovement(delta : float) -> void:
@@ -104,6 +107,7 @@ func processMovement(delta : float) -> void:
 	$Robot/CHARACTER/AnimationPlayer.play("Accelerating")
 	if speed <= 0:
 		$Robot/CHARACTER/AnimationPlayer.play("Stopping")
+		lostAudio.play()
 		currentState = playerStates.STOPPING
 	pass
 

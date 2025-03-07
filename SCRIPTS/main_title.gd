@@ -4,6 +4,8 @@ enum STATES {LOADTITLE,LOAD_FIRST_LEVEL}
 var state : STATES
 @export var firstLevel : String
 @onready var fadeTransitions : Transition = $Transition
+@onready var modelAsteroid : Node3D = $Asteroid
+@onready var modelCharacter : PathFollow3D = $Path3D/Model
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +28,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("close"):
 		print("Exiting Game")
 		get_tree().quit()
-
+	
+	modelCharacter.progress_ratio += 0.5 * delta
+	
+	modelAsteroid.rotation_degrees.y += 0.9
 	if state == STATES.LOADTITLE:
 		loadTitleState()
 	elif state == STATES.LOAD_FIRST_LEVEL:

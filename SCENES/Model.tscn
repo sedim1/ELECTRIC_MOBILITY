@@ -414,7 +414,7 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 2.12936e-16, -1.59101e-16, -2.12936e-16, 0.283471, -0.958981, -1.59101e-16, 0.958981, 0.283471, -1.43961e-16, 0.288249, -0.648344)
 bones/0/enabled = true
 bones/0/position = Vector3(-1.43961e-16, 0.288249, -0.648344)
-bones/0/rotation = Quaternion(0.598552, -4.13031e-24, -1.32905e-16, 0.801084)
+bones/0/rotation = Quaternion(0.598552, -5.62019e-24, -1.32905e-16, 0.801084)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = 0
@@ -484,5 +484,5 @@ skin = SubResource("Skin_m33md")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CHARACTER"]
 libraries = {
-"": SubResource("AnimationLibrary_adt0g")
+&"": SubResource("AnimationLibrary_adt0g")
 }

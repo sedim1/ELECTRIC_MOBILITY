@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://2qept01rea13"]
+[gd_scene load_steps=6 format=3 uid="uid://2qept01rea13"]
 
 [ext_resource type="Script" uid="uid://cbol4esp84us" path="res://SCENES/win_area.gd" id="1_fbj1h"]
+[ext_resource type="AudioStream" uid="uid://cxdch5kc4hh85" path="res://SOUNDS/win-sound-68509.mp3" id="2_qct6e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xhqsg"]
 size = Vector3(10.785, 1, 25.295)
@@ -25,5 +26,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gkn7x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57191, 0, -0.0130005)
 shape = SubResource("BoxShape3D_qmpsa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qct6e")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

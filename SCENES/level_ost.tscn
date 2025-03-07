@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1vwjjkpsxbe6"]
+
+[ext_resource type="AudioStream" uid="uid://cpryfn4owbvhr" path="res://SOUNDS/pixel-song-3-72687.mp3" id="1_duce8"]
+
+[node name="LevelOST" type="AudioStreamPlayer"]
+stream = ExtResource("1_duce8")
+autoplay = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bufmrvykkmc8b"]
+[gd_scene load_steps=15 format=3 uid="uid://bufmrvykkmc8b"]
 
 [ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_3v676"]
 [ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="2_u7dgo"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="10_yhvsg"]
 [ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="11_clrdf"]
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="12_hka2b"]
+[ext_resource type="PackedScene" uid="uid://b1vwjjkpsxbe6" path="res://SCENES/level_ost.tscn" id="13_8odo8"]
 
 [sub_resource type="Curve3D" id="Curve3D_mvu6f"]
 _data = {
@@ -352,26 +353,6 @@ minSpeed = 40.0
 transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -38.327, 2.97864e-06, -111.863)
 minSpeed = 40.0
 
-[node name="DestroyableObstacle55" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -38.327, 6.09093e-07, -166.072)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle56" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -38.327, -7.02048e-06, -340.616)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle57" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -38.327, -6.80204e-06, -335.619)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle58" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -38.327, -6.58361e-06, -330.622)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle59" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -38.327, -1.41633e-06, -212.408)
-minSpeed = 40.0
-
 [node name="Asteroid11" parent="." instance=ExtResource("12_hka2b")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -39.1108, -3.06917e-06, -251.005)
 
@@ -614,22 +595,6 @@ minSpeed = 40.0
 transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 35.073, 2.97864e-06, -111.863)
 minSpeed = 40.0
 
-[node name="DestroyableObstacle62" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 35.073, 6.09093e-07, -166.072)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle63" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 35.073, -7.02048e-06, -340.616)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle64" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 35.073, -6.80204e-06, -335.619)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle65" parent="." instance=ExtResource("11_clrdf")]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 35.073, -6.58361e-06, -330.622)
-minSpeed = 40.0
-
 [node name="Asteroid12" parent="." instance=ExtResource("12_hka2b")]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 34.2892, -3.06917e-06, -251.005)
 
@@ -865,31 +830,31 @@ transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e
 transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 35.412, -7.8324e-06, -358.852)
 
 [node name="Asteroid" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9, 0, 18.4)
 
 [node name="Asteroid2" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7, 0, 18.4)
 
 [node name="Asteroid3" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0, 18.4)
 
 [node name="Asteroid4" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3, 0, 18.4)
 
 [node name="Asteroid5" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1, 0, 18.4)
 
 [node name="Asteroid6" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9, 0, 18.4)
 
 [node name="Asteroid7" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 18.4)
 
 [node name="Asteroid8" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, 18.4)
 
 [node name="Asteroid9" parent="." instance=ExtResource("12_hka2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 18.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4, 0, 18.4)
 
 [node name="Asteroid10" parent="." instance=ExtResource("12_hka2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7, 0, 18.7)
@@ -941,3 +906,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1, 0, -360.9)
 
 [node name="Asteroid106" parent="." instance=ExtResource("12_hka2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1, 0, -360.9)
+
+[node name="LevelOST" parent="." instance=ExtResource("13_8odo8")]

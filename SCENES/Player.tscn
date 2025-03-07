@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr0hyqivuk371"]
+[gd_scene load_steps=5 format=3 uid="uid://cr0hyqivuk371"]
 
 [ext_resource type="Script" uid="uid://pqgpftvdmtn3" path="res://SCRIPTS/character_body_3d.gd" id="1_x7emw"]
+[ext_resource type="AudioStream" uid="uid://csyf0ufgg3cmm" path="res://SOUNDS/pixel-death-66829.mp3" id="3_4cgft"]
 [ext_resource type="PackedScene" uid="uid://s3aar6mrexjn" path="res://SCENES/Model.tscn" id="3_5e2m7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uo58y"]
@@ -41,3 +42,8 @@ collision_mask = 2
 transform = Transform3D(0.939693, 1.49502e-08, 0.34202, -1.49502e-08, 1, -2.63612e-09, -0.34202, -2.63612e-09, 0.939693, 0, 0, 0)
 target_position = Vector3(2.29, 0, 0)
 collision_mask = 2
+
+[node name="LostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4cgft")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]

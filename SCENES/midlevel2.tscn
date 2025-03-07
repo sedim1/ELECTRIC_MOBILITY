@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bl3pasjmh4eqj"]
+[gd_scene load_steps=16 format=3 uid="uid://bl3pasjmh4eqj"]
 
 [ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_kn1ch"]
 [ext_resource type="PackedScene" uid="uid://cr0hyqivuk371" path="res://SCENES/Player.tscn" id="2_r37cf"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="10_jflcv"]
 [ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="11_l5rwr"]
 [ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="12_jflcv"]
+[ext_resource type="PackedScene" uid="uid://b1vwjjkpsxbe6" path="res://SCENES/level_ost.tscn" id="13_4m0tn"]
 
 [sub_resource type="Curve3D" id="Curve3D_4m0tn"]
 _data = {
@@ -1682,3 +1683,5 @@ transform = Transform3D(0.173648, 4.18601e-06, 0.984808, -3.61933e-06, 1, -3.612
 size = Vector3(124.2, 4.6, 1)
 
 [node name="Transition" parent="CSGCombiner3D" instance=ExtResource("3_1uqmf")]
+
+[node name="LevelOST" parent="." instance=ExtResource("13_4m0tn")]

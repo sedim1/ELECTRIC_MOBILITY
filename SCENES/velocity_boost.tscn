@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://b7ee8j8er8dnb"]
+[gd_scene load_steps=9 format=4 uid="uid://b7ee8j8er8dnb"]
 
 [ext_resource type="Script" uid="uid://ckpm6xnsh2c4s" path="res://SCRIPTS/velocity_boost.gd" id="1_0jq2i"]
 [ext_resource type="Texture2D" uid="uid://ut3bo3sdxmup" path="res://ADDONS/velocityBooster_VelocityBooster.png" id="2_gw47m"]
 [ext_resource type="Shader" uid="uid://cr5q7px0rnj1d" path="res://SHADERS/PS1.gdshader" id="2_uaewq"]
+[ext_resource type="AudioStream" uid="uid://d3nwc2fwn5cs1" path="res://SOUNDS/pixel-sound-effect-4-82881.mp3" id="4_mfjyl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_il2ds"]
 radius = 0.0724293
@@ -67,5 +68,8 @@ transform = Transform3D(4.8202, 0, 0, 0, 4.8202, 0, 0, 0, 4.8202, 0, 0, 0)
 transform = Transform3D(0.366499, 0, 0, 0, 0.366499, 0, 0, 0, 0.366499, 0, 0, 0)
 mesh = SubResource("ArrayMesh_3d1ft")
 skeleton = NodePath("")
+
+[node name="BoostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mfjyl")
 
 [connection signal="body_entered" from="." to="." method="increaseVelocityPlayer"]

@@ -1,17 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://hkmuddovojjj"]
+[gd_scene load_steps=10 format=3 uid="uid://hkmuddovojjj"]
 
 [ext_resource type="Script" uid="uid://nhx8a7wf5hbq" path="res://SCRIPTS/main_title.gd" id="1_l58l5"]
+[ext_resource type="FontFile" uid="uid://bf1j2fcukoi8v" path="res://FONTS/SuperPixel-m2L8j.ttf" id="2_52c2l"]
 [ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="2_kxaqf"]
+[ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="3_sa3xv"]
+[ext_resource type="PackedScene" uid="uid://s3aar6mrexjn" path="res://SCENES/Model.tscn" id="4_jknpn"]
+[ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="8_w5psw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hkhrj"]
+font = ExtResource("2_52c2l")
 font_size = 30
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kfn7t"]
+font = ExtResource("2_52c2l")
 font_size = 14
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_jknpn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 5.74, 0, 0, 0, 0, 0, -6, 0, -6, 0, 0, -6.17, 0, 0, 0, -12, 0, 0, -6.3, 0, 0, 0, 0, 0, -6, 0, 6, 0, 0, 6.12, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="MainTitle" type="Node3D"]
 script = ExtResource("1_l58l5")
 firstLevel = "res://SCENES/level_easy.tscn"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -21,20 +42,41 @@ offset_bottom = 40.0
 
 [node name="Title" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 12.0
-offset_right = 250.0
-offset_bottom = 54.0
+offset_left = 64.0
+offset_top = 10.0
+offset_right = 267.0
+offset_bottom = 52.0
 text = "FORWARGY"
 label_settings = SubResource("LabelSettings_hkhrj")
 
 [node name="Indication" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 200.0
-offset_right = 244.0
-offset_bottom = 223.0
+offset_left = 63.0
+offset_top = 204.0
+offset_right = 282.0
+offset_bottom = 227.0
 text = "PRESS ENTER TO START"
 label_settings = SubResource("LabelSettings_kfn7t")
 
 [node name="Transition" parent="." instance=ExtResource("2_kxaqf")]
+
+[node name="SpaceStars" parent="." instance=ExtResource("3_sa3xv")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.6)
+fov = 70.4
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+curve = SubResource("Curve3D_jknpn")
+
+[node name="Model" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.999501, 0, -0.0315883, 0, 1.00009, 0, 0.0315883, 0, 0.999501, -0.00447456, 0, 0.286344)
+progress = 37.8921
+rotation_mode = 4
+
+[node name="Robot" parent="Path3D/Model" instance=ExtResource("4_jknpn")]
+transform = Transform3D(-0.995396, 0, 0.0958458, 0, 1, 0, -0.0958458, 0, -0.995396, 0, 0, 0)
+
+[node name="Asteroid" parent="." instance=ExtResource("8_w5psw")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)

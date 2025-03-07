@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://c4dvppyqg3b6j"]
+[gd_scene load_steps=10 format=4 uid="uid://c4dvppyqg3b6j"]
 
 [ext_resource type="Script" uid="uid://cqrlfc4ek5jyn" path="res://SCRIPTS/destroyable_obstacle.gd" id="1_4gduf"]
 [ext_resource type="Script" uid="uid://bq7wy853k0lli" path="res://SCRIPTS/undestroyable.gd" id="2_53jyk"]
 [ext_resource type="Shader" uid="uid://cr5q7px0rnj1d" path="res://SHADERS/PS1.gdshader" id="2_avabk"]
 [ext_resource type="Texture2D" uid="uid://dgxueeg2jaw8l" path="res://ADDONS/Asteroid/Asteroid_Asteroid.png" id="2_wen0x"]
+[ext_resource type="AudioStream" uid="uid://bk8n42gwa2kqm" path="res://SOUNDS/pixel-sound-effect-3-82880.mp3" id="5_b5mxm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x05yw"]
 size = Vector3(0.8, 1, 0.8)
@@ -65,3 +66,6 @@ script = ExtResource("2_53jyk")
 transform = Transform3D(1.7366, 0, 0, 0, 1.7366, 0, 0, 0, 1.7366, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gpjna")
 skeleton = NodePath("")
+
+[node name="DestroyedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b5mxm")

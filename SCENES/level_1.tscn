@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds1wkxys3vj0f"]
+[gd_scene load_steps=12 format=3 uid="uid://ds1wkxys3vj0f"]
 
 [ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="1_k2own"]
 [ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_xlwda"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bctbdlvmmgvne" path="res://SCENES/player_ui.tscn" id="6_qrieq"]
 [ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="8_rbino"]
 [ext_resource type="PackedScene" uid="uid://3n4g8h21pfga" path="res://SCENES/transition.tscn" id="10_yhr03"]
+[ext_resource type="PackedScene" uid="uid://b1vwjjkpsxbe6" path="res://SCENES/level_ost.tscn" id="11_dnviy"]
 [ext_resource type="PackedScene" uid="uid://2qept01rea13" path="res://SCENES/win_area.tscn" id="11_h21sa"]
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("character")]
@@ -2001,3 +2002,5 @@ p = NodePath("../Player")
 
 [node name="WinArea" parent="." instance=ExtResource("11_h21sa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.474, 0, -252.909)
+
+[node name="LevelOST" parent="." instance=ExtResource("11_dnviy")]

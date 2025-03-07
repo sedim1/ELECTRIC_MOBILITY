@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkspddxnw5age"]
+[gd_scene load_steps=14 format=3 uid="uid://bkspddxnw5age"]
 
 [ext_resource type="Script" uid="uid://vl2f5ug6tii2" path="res://SCRIPTS/WorldHandler.gd" id="1_1yqq2"]
 [ext_resource type="PackedScene" uid="uid://cbndwh2vqd3f6" path="res://SCENES/space_stars.tscn" id="1_yrher"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c4ymo0gy0ve2" path="res://SCENES/Undestroyable.tscn" id="9_4n86x"]
 [ext_resource type="PackedScene" uid="uid://b7ee8j8er8dnb" path="res://SCENES/velocity_boost.tscn" id="10_65xl4"]
 [ext_resource type="PackedScene" uid="uid://c4dvppyqg3b6j" path="res://SCENES/destroyable_obstacle.tscn" id="11_i0xd8"]
+[ext_resource type="PackedScene" uid="uid://b1vwjjkpsxbe6" path="res://SCENES/level_ost.tscn" id="12_2dppt"]
 
 [sub_resource type="Curve3D" id="Curve3D_4n86x"]
 _data = {
@@ -126,10 +127,6 @@ speedBoost = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.762, 0, -14.1878)
 speedBoost = 30.0
 
-[node name="DestroyableObstacle" parent="." instance=ExtResource("11_i0xd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, -20.3067)
-minSpeed = 40.0
-
 [node name="DestroyableObstacle2" parent="." instance=ExtResource("11_i0xd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, -14.6028)
 minSpeed = 40.0
@@ -160,10 +157,6 @@ minSpeed = 40.0
 
 [node name="DestroyableObstacle9" parent="." instance=ExtResource("11_i0xd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.0196, 0, 25.5261)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle10" parent="." instance=ExtResource("11_i0xd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, -20.3067)
 minSpeed = 40.0
 
 [node name="DestroyableObstacle11" parent="." instance=ExtResource("11_i0xd8")]
@@ -198,10 +191,6 @@ minSpeed = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.131, 0, 25.5261)
 minSpeed = 40.0
 
-[node name="DestroyableObstacle19" parent="." instance=ExtResource("11_i0xd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, -20.3067)
-minSpeed = 40.0
-
 [node name="DestroyableObstacle20" parent="." instance=ExtResource("11_i0xd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, -14.6028)
 minSpeed = 40.0
@@ -232,10 +221,6 @@ minSpeed = 40.0
 
 [node name="DestroyableObstacle27" parent="." instance=ExtResource("11_i0xd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.34, 0, 25.5261)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle37" parent="." instance=ExtResource("11_i0xd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, -20.3067)
 minSpeed = 40.0
 
 [node name="DestroyableObstacle38" parent="." instance=ExtResource("11_i0xd8")]
@@ -270,10 +255,6 @@ minSpeed = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 347.884, 0, 25.5261)
 minSpeed = 40.0
 
-[node name="DestroyableObstacle46" parent="." instance=ExtResource("11_i0xd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, -20.3067)
-minSpeed = 40.0
-
 [node name="DestroyableObstacle47" parent="." instance=ExtResource("11_i0xd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, -14.6028)
 minSpeed = 40.0
@@ -306,10 +287,6 @@ minSpeed = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 342.887, 0, 25.5261)
 minSpeed = 40.0
 
-[node name="DestroyableObstacle55" parent="." instance=ExtResource("11_i0xd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, -20.3067)
-minSpeed = 40.0
-
 [node name="DestroyableObstacle56" parent="." instance=ExtResource("11_i0xd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, -14.6028)
 minSpeed = 40.0
@@ -340,10 +317,6 @@ minSpeed = 40.0
 
 [node name="DestroyableObstacle63" parent="." instance=ExtResource("11_i0xd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 337.89, 0, 25.5261)
-minSpeed = 40.0
-
-[node name="DestroyableObstacle28" parent="." instance=ExtResource("11_i0xd8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.676, 0, -20.3067)
 minSpeed = 40.0
 
 [node name="DestroyableObstacle29" parent="." instance=ExtResource("11_i0xd8")]
@@ -417,9 +390,6 @@ speedBoost = 30.0
 [node name="VelocityBoost10" parent="." instance=ExtResource("10_65xl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 211.405, 0, 21.0269)
 speedBoost = 30.0
-
-[node name="Asteroid11" parent="." instance=ExtResource("9_4n86x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.272, 0, -21.0906)
 
 [node name="Asteroid12" parent="." instance=ExtResource("9_4n86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.272, 0, -14.9015)
@@ -999,3 +969,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380.042, 0, 31.8151)
 
 [node name="Asteroid190" parent="." instance=ExtResource("9_4n86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 385.666, 0, 31.8151)
+
+[node name="LevelOST" parent="." instance=ExtResource("12_2dppt")]
