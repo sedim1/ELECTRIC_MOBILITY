@@ -9,7 +9,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_hkhrj"]
 font = ExtResource("2_52c2l")
-font_size = 30
+font_size = 25
 outline_size = 30
 outline_color = Color(0, 0, 0, 1)
 
@@ -46,8 +46,11 @@ offset_left = 64.0
 offset_top = 10.0
 offset_right = 267.0
 offset_bottom = 52.0
-text = "FORWARGY"
+text = "SPACE
+DASH"
 label_settings = SubResource("LabelSettings_hkhrj")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Indication" type="Label" parent="Control"]
 layout_mode = 0

@@ -247,15 +247,6 @@ minSpeed = 40.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5468, 0, -46.8907)
 minSpeed = 40.0
 
-[node name="DestroyableObstacle26" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.499, 0, -265.373)
-
-[node name="DestroyableObstacle27" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.499, 0, -268.452)
-
-[node name="DestroyableObstacle28" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.499, 0, -260.981)
-
 [node name="DestroyableObstacle29" parent="Obstacles" instance=ExtResource("6_ixfd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -271.354)
 
@@ -282,24 +273,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -242.153)
 
 [node name="DestroyableObstacle37" parent="Obstacles" instance=ExtResource("6_ixfd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.638, 0, -237.464)
-
-[node name="DestroyableObstacle40" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -255.917)
-
-[node name="DestroyableObstacle41" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -252.66)
-
-[node name="DestroyableObstacle42" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -248.663)
-
-[node name="DestroyableObstacle43" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.829, 0, -265.373)
-
-[node name="DestroyableObstacle44" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.829, 0, -268.452)
-
-[node name="DestroyableObstacle45" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.829, 0, -260.981)
 
 [node name="DestroyableObstacle46" parent="Obstacles" instance=ExtResource("6_ixfd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -271.354)
@@ -328,24 +301,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -242.153)
 [node name="DestroyableObstacle54" parent="Obstacles" instance=ExtResource("6_ixfd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.968, 0, -237.464)
 
-[node name="DestroyableObstacle57" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -255.917)
-
-[node name="DestroyableObstacle58" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -252.66)
-
-[node name="DestroyableObstacle59" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -248.663)
-
-[node name="DestroyableObstacle60" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.159, 0, -265.373)
-
-[node name="DestroyableObstacle61" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.159, 0, -268.452)
-
-[node name="DestroyableObstacle62" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.159, 0, -260.981)
-
 [node name="DestroyableObstacle63" parent="Obstacles" instance=ExtResource("6_ixfd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -271.354)
 
@@ -372,42 +327,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -242.153)
 
 [node name="DestroyableObstacle71" parent="Obstacles" instance=ExtResource("6_ixfd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.298, 0, -237.464)
-
-[node name="DestroyableObstacle74" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -255.917)
-
-[node name="DestroyableObstacle75" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -252.66)
-
-[node name="DestroyableObstacle76" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -248.663)
-
-[node name="DestroyableObstacle77" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -243.989)
-
-[node name="DestroyableObstacle78" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -239.992)
-
-[node name="DestroyableObstacle79" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -243.989)
-
-[node name="DestroyableObstacle80" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -239.992)
-
-[node name="DestroyableObstacle81" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -243.989)
-
-[node name="DestroyableObstacle82" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -239.992)
-
-[node name="DestroyableObstacle83" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.536, 0, -236.855)
-
-[node name="DestroyableObstacle84" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.866, 0, -236.855)
-
-[node name="DestroyableObstacle85" parent="Obstacles" instance=ExtResource("6_ixfd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.196, 0, -236.855)
 
 [node name="Asteroids" type="Node3D" parent="."]
 

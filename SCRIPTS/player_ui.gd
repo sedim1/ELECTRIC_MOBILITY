@@ -8,7 +8,6 @@ var UISTATE : States
 @onready var speedCounter : Label = $Label
 @onready var skipText : Label = $Label2
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UISTATE = States.READY
@@ -33,7 +32,7 @@ func _process(delta: float) -> void:
 		skipText.text = ""
 		pass
 	elif UISTATE == States.PLAYING:
-		skipText.text = "R"
+		skipText.text = "RESTART - R"
 		getPlayerSpeed()
 		pass
 	pass
