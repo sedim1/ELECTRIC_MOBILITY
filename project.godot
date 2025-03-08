@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="KEEPMOVING"
+config/name="SPACE DASH"
 run/main_scene="res://SCENES/MainTitle.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
